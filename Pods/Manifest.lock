@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.9.1)
+  - DropDown (2.3.13)
+  - Toaster (2.3.0)
+  - YouTubePlayer-Swift (1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - DropDown
+  - Toaster
+  - YouTubePlayer-Swift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DropDown
+    - Toaster
+    - YouTubePlayer-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+  YouTubePlayer-Swift: ae82f4bcb504162a872b852596a9dc1fa3828c34
+
+PODFILE CHECKSUM: bff3691a208042e5741b107b98bade64b832063a
+
+COCOAPODS: 1.15.2
