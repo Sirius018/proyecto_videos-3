@@ -89,4 +89,13 @@ class NuevoProfesorViewController: UIViewController {
             }
     }
     
+    
+    
+    
+    @IBAction func btnVolver(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("ProfesorGuardado"), object: nil)
+        dismiss(animated: true)
+    }
+    
+    
 }
