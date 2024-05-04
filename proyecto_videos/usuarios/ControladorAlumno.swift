@@ -7,6 +7,9 @@
 
 import UIKit
 
-class ControladorAlumno: NSObject {
-
-}
+class ControladorAlumno {
+    func saveAlumno(bean:Alumno) {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let contextoDB = delegate.persistentContainer.viewContext
+        var tabla = Entity(context: contextoDB)
+    }}

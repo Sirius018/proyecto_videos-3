@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		47D5D1B9625C516B1D3325DF /* Pods_proyecto_videosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB0D84A3867CFD304E91228 /* Pods_proyecto_videosTests.framework */; };
+		AD9F80812BE554FA00990132 /* RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */; };
+		AD9F80852BE59A5400990132 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9F80842BE59A5400990132 /* GoogleService-Info.plist */; };
+		AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */; };
+		AD9F808A2BE5DAA100990132 /* ItemmProfesorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80892BE5DAA100990132 /* ItemmProfesorTableViewCell.swift */; };
+		AD9F808C2BE5DCC500990132 /* Profesor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F808B2BE5DCC500990132 /* Profesor.swift */; };
+		AD9F808E2BE5DDCF00990132 /* NuevoProfesorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F808D2BE5DDCF00990132 /* NuevoProfesorViewController.swift */; };
 		ADC254182BE27E1400F3459C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254172BE27E1400F3459C /* MenuViewController.swift */; };
 		ADC2541A2BE2846400F3459C /* CursoItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254192BE2846400F3459C /* CursoItemCollectionViewCell.swift */; };
 		ADC2541C2BE2848300F3459C /* CursoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC2541B2BE2848300F3459C /* CursoViewController.swift */; };
+		ADC254222BE2FF5B00F3459C /* Alumno.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254212BE2FF5B00F3459C /* Alumno.swift */; };
+		ADC254242BE2FFE000F3459C /* ControladorAlumno.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254232BE2FFE000F3459C /* ControladorAlumno.swift */; };
 		B708DC042BDEEDC300F36799 /* HelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708DC032BDEEDC300F36799 /* HelperViewController.swift */; };
 		B738BF482BDE9DDE0064ADA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B738BF472BDE9DDE0064ADA2 /* AppDelegate.swift */; };
 		B738BF4A2BDE9DDE0064ADA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B738BF492BDE9DDE0064ADA2 /* SceneDelegate.swift */; };
@@ -48,9 +56,17 @@
 		41CC435AC1F92D24581A6D29 /* Pods-proyecto_videos-proyecto_videosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proyecto_videos-proyecto_videosUITests.debug.xcconfig"; path = "Target Support Files/Pods-proyecto_videos-proyecto_videosUITests/Pods-proyecto_videos-proyecto_videosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5099B1EDF165AB83E0239562 /* Pods-proyecto_videos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proyecto_videos.release.xcconfig"; path = "Target Support Files/Pods-proyecto_videos/Pods-proyecto_videos.release.xcconfig"; sourceTree = "<group>"; };
 		595ACCE14F2D1B67E50AE34C /* Pods-proyecto_videos-proyecto_videosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proyecto_videos-proyecto_videosUITests.release.xcconfig"; path = "Target Support Files/Pods-proyecto_videos-proyecto_videosUITests/Pods-proyecto_videos-proyecto_videosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseViewController.swift; sourceTree = "<group>"; };
+		AD9F80842BE59A5400990132 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfesorViewController.swift; sourceTree = "<group>"; };
+		AD9F80892BE5DAA100990132 /* ItemmProfesorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemmProfesorTableViewCell.swift; sourceTree = "<group>"; };
+		AD9F808B2BE5DCC500990132 /* Profesor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profesor.swift; sourceTree = "<group>"; };
+		AD9F808D2BE5DDCF00990132 /* NuevoProfesorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoProfesorViewController.swift; sourceTree = "<group>"; };
 		ADC254172BE27E1400F3459C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ADC254192BE2846400F3459C /* CursoItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursoItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADC2541B2BE2848300F3459C /* CursoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursoViewController.swift; sourceTree = "<group>"; };
+		ADC254212BE2FF5B00F3459C /* Alumno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alumno.swift; sourceTree = "<group>"; };
+		ADC254232BE2FFE000F3459C /* ControladorAlumno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorAlumno.swift; sourceTree = "<group>"; };
 		B708DC032BDEEDC300F36799 /* HelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperViewController.swift; sourceTree = "<group>"; };
 		B738BF442BDE9DDE0064ADA2 /* proyecto_videos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proyecto_videos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B738BF472BDE9DDE0064ADA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +140,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD9F80862BE5D57F00990132 /* profesores */ = {
+			isa = PBXGroup;
+			children = (
+				AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */,
+				AD9F80892BE5DAA100990132 /* ItemmProfesorTableViewCell.swift */,
+				AD9F808B2BE5DCC500990132 /* Profesor.swift */,
+				AD9F808D2BE5DDCF00990132 /* NuevoProfesorViewController.swift */,
+			);
+			path = profesores;
+			sourceTree = "<group>";
+		};
 		ADC254132BE27CE100F3459C /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +172,8 @@
 		ADC254152BE27D0000F3459C /* usuarios */ = {
 			isa = PBXGroup;
 			children = (
+				ADC254212BE2FF5B00F3459C /* Alumno.swift */,
+				ADC254232BE2FFE000F3459C /* ControladorAlumno.swift */,
 			);
 			path = usuarios;
 			sourceTree = "<group>";
@@ -159,6 +188,7 @@
 		B708DC022BDEEDA700F36799 /* help */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F80842BE59A5400990132 /* GoogleService-Info.plist */,
 				B708DC032BDEEDC300F36799 /* HelperViewController.swift */,
 			);
 			path = help;
@@ -189,6 +219,7 @@
 		B738BF462BDE9DDE0064ADA2 /* proyecto_videos */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F80862BE5D57F00990132 /* profesores */,
 				ADC254152BE27D0000F3459C /* usuarios */,
 				ADC254142BE27CF300F3459C /* cursos */,
 				ADC254132BE27CE100F3459C /* menu */,
@@ -201,6 +232,7 @@
 				B738BF552BDE9DDF0064ADA2 /* LaunchScreen.storyboard */,
 				B738BF582BDE9DDF0064ADA2 /* Info.plist */,
 				B738BF502BDE9DDE0064ADA2 /* proyecto_videos.xcdatamodeld */,
+				AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */,
 			);
 			path = proyecto_videos;
 			sourceTree = "<group>";
@@ -332,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B738BF572BDE9DDF0064ADA2 /* LaunchScreen.storyboard in Resources */,
+				AD9F80852BE59A5400990132 /* GoogleService-Info.plist in Resources */,
 				B738BF542BDE9DDF0064ADA2 /* Assets.xcassets in Resources */,
 				B738BF4F2BDE9DDE0064ADA2 /* Main.storyboard in Resources */,
 			);
@@ -461,11 +494,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9F80812BE554FA00990132 /* RegistrarseViewController.swift in Sources */,
 				B738BF4C2BDE9DDE0064ADA2 /* ViewController.swift in Sources */,
+				ADC254222BE2FF5B00F3459C /* Alumno.swift in Sources */,
 				ADC254182BE27E1400F3459C /* MenuViewController.swift in Sources */,
+				AD9F808E2BE5DDCF00990132 /* NuevoProfesorViewController.swift in Sources */,
 				B738BF482BDE9DDE0064ADA2 /* AppDelegate.swift in Sources */,
+				AD9F808C2BE5DCC500990132 /* Profesor.swift in Sources */,
 				B738BF522BDE9DDE0064ADA2 /* proyecto_videos.xcdatamodeld in Sources */,
+				AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */,
+				ADC254242BE2FFE000F3459C /* ControladorAlumno.swift in Sources */,
 				B738BF4A2BDE9DDE0064ADA2 /* SceneDelegate.swift in Sources */,
+				AD9F808A2BE5DAA100990132 /* ItemmProfesorTableViewCell.swift in Sources */,
 				ADC2541A2BE2846400F3459C /* CursoItemCollectionViewCell.swift in Sources */,
 				B708DC042BDEEDC300F36799 /* HelperViewController.swift in Sources */,
 				ADC2541C2BE2848300F3459C /* CursoViewController.swift in Sources */,
@@ -647,8 +687,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08EA788180A96F817F349888 /* Pods-proyecto_videos.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -664,6 +706,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "cibertec.proyecto-videos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -676,8 +719,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5099B1EDF165AB83E0239562 /* Pods-proyecto_videos.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -693,6 +738,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "cibertec.proyecto-videos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

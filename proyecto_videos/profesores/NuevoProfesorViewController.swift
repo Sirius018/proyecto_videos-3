@@ -1,29 +1,92 @@
-//
-//  NuevoProfesorViewController.swift
-//  proyecto_videos
-//
-//  Created by Judith Chavez on 3/05/24.
-//
 
 import UIKit
+import Alamofire
 
 class NuevoProfesorViewController: UIViewController {
 
+    @IBOutlet weak var txtIdProfesor: UITextField!
+    @IBOutlet weak var txtNombreProfesor: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func btnRegistrar(_ sender: UIButton) {
+        guard let idP = Int16(txtIdProfesor.text ?? "0"), let nombreP = txtNombreProfesor.text else {
+            mostrarAlertaError(mensaje: "Por favor, completa todos los campos.")
+            return
+        }
 
-    /*
-    // MARK: - Navigation
+        if nombreP.isEmpty {
+            mostrarAlertaError(mensaje: "Por favor, ingresa nombre del profesor.")
+        } else {
+            obtenerListaProfesores { profesores in
+                guard let profesores = profesores else {
+                    print("No se pudo obtener la lista de profesores.")
+                    return
+                }
+                
+                let idExistente = profesores.contains { $0.idProfesor == idP }
+                let nombreExistente = profesores.contains { $0.nombreProfesor == nombreP }
+                // valida que profesor no exista
+                if idExistente {
+                    self.mostrarAlertaError(mensaje: "El ID ya está en uso")
+                } else if nombreExistente {
+                    self.mostrarAlertaError(mensaje: "El nombre del profesor ya existe, usar otro")
+                } else {
+                    
+                    let parametros: [String: Any] = [
+                        "idProfesor": idP,
+                        "nombreProfesor": nombreP
+                    ]
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+                    AF.request("https://api-moviles-2.onrender.com/profesores", method: .post, parameters: parametros, encoding: JSONEncoding.default, headers: nil)
+                        .validate()
+                        .responseJSON { response in
+                            switch response.result {
+                            case .success:
+                                print("Registro exitoso")
+                                self.mostrarMensajeExito()
+                                
+                            case .failure(let error):
+                                print("Error al registrar: \(error)")
+                            }
+                        }
+                }
+            }
+        }
     }
-    */
+    
+    
+    
+    
+    func mostrarAlertaError(mensaje: String) {
+        let alertController = UIAlertController(title: "Error", message: mensaje, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 
+    
+    func mostrarMensajeExito() {
+        let alertController = UIAlertController(title: "Éxito", message: "Se ha registrado correctamente el profesor.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func obtenerListaProfesores(completion: @escaping ([Profesor]?) -> Void) {
+        AF.request("https://api-moviles-2.onrender.com/profesores")
+            .responseDecodable(of: [Profesor].self) { response in
+                guard let profesores = response.value else {
+                    completion(nil)
+                    return
+                }
+                completion(profesores)
+            }
+    }
+    
 }
