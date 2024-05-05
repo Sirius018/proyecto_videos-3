@@ -6,24 +6,29 @@
 //
 
 import UIKit
+import Alamofire
 
-class CursoViewController: UIViewController {
+class CursoViewController: UIViewController,UICollectionViewDataSource,
+                           UICollectionViewDelegateFlowLayout {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+=    }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    
+    func cargarMedicamentos(){
+            AF.request("https://api-moviles-2.onrender.com/cursos")
+                .responseDecodable(of: [Cursos].self){ data in
+                    guard let info=data.value else {return}
+                    self.arregloCursos=info
+                    self.cvCursos.reloadData()
+                }
     }
-    */
 
 }

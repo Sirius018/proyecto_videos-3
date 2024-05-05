@@ -23,6 +23,9 @@ class MenuViewController: UIViewController {
         
     }
     
+    @IBAction func btnAlumno(_ sender: UIButton) {
+        performSegue(withIdentifier: "alumno", sender: nil)
+    }
     
     
     @IBAction func btnProfesor(_ sender: UIButton) {

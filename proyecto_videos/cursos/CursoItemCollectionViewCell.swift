@@ -9,4 +9,12 @@ import UIKit
 
 class CursoItemCollectionViewCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var imgCursos: UIImageView!
+    
+    @IBOutlet weak var lblCursos: UILabel!
+    
+    
+  
+    
 }
