@@ -7,8 +7,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var btnCursos: UIButton!
     @IBOutlet weak var btnAlumnos: UIButton!
     @IBOutlet weak var btnMisCursos: UIButton!
-    var email:String = ""
-    var provider: String = ""
+    var email:String!
+    var provider: String!
     
     
     @IBOutlet weak var lblEmail: UILabel!
@@ -23,9 +23,7 @@ class MenuViewController: UIViewController {
         
     }
     
-    @IBAction func btnAlumno(_ sender: UIButton) {
-        performSegue(withIdentifier: "alumno", sender: nil)
-    }
+    
     
     
     @IBAction func btnProfesor(_ sender: UIButton) {
@@ -34,10 +32,7 @@ class MenuViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="lkProfesor" {
-            let pantallaP=segue.destination as! ProfesorViewController
-            //pantallaP.info=bean
-        }
+        
     }
     
     

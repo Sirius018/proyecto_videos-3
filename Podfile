@@ -21,14 +21,14 @@ target 'proyecto_videos' do
   pod 'YouTubePlayer-Swift' 
   #pod 'UIKit'
   
-  #pod 'FirebaseAnalytics', '= 6.2.2'
+  pod 'FirebaseAnalytics'
 
   # For Analytics without IDFA collection capability, use this pod instead
   # pod ‘Firebase/AnalyticsWithoutAdIdSupport’
 
   # Add the pods for any other Firebase products you want to use in your app
   # For example, to use Firebase Authentication and Cloud Firestore
-  pod 'FirebaseAuth', '= 6.4.3'
-  #pod 'FirebaseFirestore'
-  #pod 'GoogleSignIn', '~> 6.0'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'GoogleSignIn'
 end

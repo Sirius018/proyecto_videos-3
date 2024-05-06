@@ -200,7 +200,6 @@
 		B708DC022BDEEDA700F36799 /* help */ = {
 			isa = PBXGroup;
 			children = (
-				AD9F80842BE59A5400990132 /* GoogleService-Info.plist */,
 				B708DC032BDEEDC300F36799 /* HelperViewController.swift */,
 			);
 			path = help;
@@ -239,6 +238,7 @@
 				B738BF472BDE9DDE0064ADA2 /* AppDelegate.swift */,
 				B738BF492BDE9DDE0064ADA2 /* SceneDelegate.swift */,
 				B738BF4B2BDE9DDE0064ADA2 /* ViewController.swift */,
+				AD9F80842BE59A5400990132 /* GoogleService-Info.plist */,
 				B738BF4D2BDE9DDE0064ADA2 /* Main.storyboard */,
 				B738BF532BDE9DDF0064ADA2 /* Assets.xcassets */,
 				B738BF552BDE9DDF0064ADA2 /* LaunchScreen.storyboard */,

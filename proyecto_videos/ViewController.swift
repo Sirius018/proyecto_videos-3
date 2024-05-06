@@ -3,7 +3,7 @@ import UIKit
 import Alamofire
 import FirebaseCore
 import FirebaseAuth
-//import GoogleSignIn
+import GoogleSignIn
 class ViewController: UIViewController {
 
     @IBOutlet weak var txtUsuario: UITextField!
@@ -24,23 +24,12 @@ class ViewController: UIViewController {
         if let email = defaults.value(forKey: "email") as? String,
            let provider = defaults.value(forKey: "provider") as? String,
            !email.isEmpty, !provider.isEmpty {
-            print("Hola")
-            ///self.navigationController?.popViewController(animated: true)
-            self.performSegue(withIdentifier: "menu", sender: nil)
+            print(email)
+            print("el proveedor es" + provider)
+            //self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "menu", sender: self)
         }
-/*
-        // Google auth
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.delegate = self*/
-        
-        
-        
-        
-         /*        if let email = defaults.value(forKey: "email") as? String,
-           let provider = defaults.value(forKey: "provider") as? String{
-            print("Hola")
-            self.performSegue(withIdentifier: "menu", sender: nil)
-            self.dismiss(animated: true, completion: nil)        }*/
+
     }
     
     @IBAction func btnRegistrarse(_ sender: UIButton) {
@@ -66,6 +55,13 @@ class ViewController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if let result = result, error == nil{
                     self.provider = "basic"
+                    var email = self.txtUsuario.text ?? ""
+                    var provider = self.provider
+                    let defaults = UserDefaults.standard
+                    defaults.set(email, forKey: "email")
+                    defaults.set(provider, forKey: "provider")
+                    defaults.synchronize()
+                    print("hola")
                     self.performSegue(withIdentifier: "menu", sender: nil)
                 } else {
                     self.mostrarAlerta(mensaje: "Se ha producido un error")
@@ -77,25 +73,66 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnGoogleAccion(_ sender: UIButton) {
-       /* GIDSignIn.sharedInstance()?.signOut()
-        GIDSignIn.sharedInstance()?.signIn()*/
+       GIDSignIn.sharedInstance.signOut()
+        /*GIDSignIn.sharedInstance()?.signIn()*/
         
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
         
-        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
+            guard error == nil else {
+                print("Error al iniciar sesión con Google: \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString
+            else {
+                print("Error: No se pudo obtener el token de ID del usuario.")
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+            
+            // Use the credential to sign in with Firebase Authentication
+              Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                  print("Error al autenticar con Firebase: \(error.localizedDescription)")
+                  return
+                }
+                  // El usuario ha iniciado sesión correctamente, puedes acceder a authResult.user para obtener información del usuario
+                      let userID = authResult!.user.uid
+                      let userEmail = authResult!.user.email ?? ""
+                      let userName = authResult!.user.displayName ?? ""
+                      
+                      // Guardar la información en UserDefaults
+                      let defaults = UserDefaults.standard
+                      defaults.set(userID, forKey: "userID")
+                      defaults.set(userEmail, forKey: "userEmail")
+                      defaults.set(userName, forKey: "userName")
+                      
+                      print("Usuario autenticado con Firebase: \(userID)")
+                      print("Email del usuario: \(userEmail)")
+                      print("Nombre del usuario: \(userName)")
+                // El usuario ha iniciado sesión correctamente, puedes acceder a authResult.user para obtener información del usuario
+                print("Usuario autenticado con Firebase: \(authResult!.user.uid)")
+                  self.performSegue(withIdentifier: "menu", sender: nil)
+              }
+        }
+    
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="menu" {
-            let p2 = segue.destination as! MenuViewController
-            p2.provider = self.provider
+            //let p2 = segue.destination as! MenuViewController
+            //p2.provider = self.provider
             
-            var email_x = txtUsuario.text ?? ""
-            p2.email = email_x
-            let defaults = UserDefaults.standard
-            defaults.set(email_x, forKey: "email")
-            defaults.set(provider, forKey: "provider")
-            defaults.synchronize()        }
+               }
     }
     func obtenerUsuarios() {
             // URL del API
@@ -147,16 +184,5 @@ class ViewController: UIViewController {
                     self.mostrarAlerta(mensaje: "Se ha producido un error")
                 }
     }
-}/*
-extension ViewController:GIDSignInDelegate{
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error == nil && user.authentication != nil {
-            let credential = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken, accessToken: user.authentication.accessToken)
-            Auth.auth().signIn(with: credential){
-                (result, error) in
-                self.showHome(result:result, error: error, provider: "google")
-            }
-            }
-        }
-}*/
+}
 
