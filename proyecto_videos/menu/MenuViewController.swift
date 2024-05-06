@@ -16,7 +16,8 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let sesion = defaults.value(forKey: "sesion") as? [String: Any] {
+        self.defaults.synchronize()
+        if let sesion = self.defaults.value(forKey: "sesion") as? [String: Any] {
             if let email = sesion["email"] as? String,
                let provider = sesion["provider"] as? String,
                let rol = sesion["rol"] as? String {
@@ -26,6 +27,10 @@ class MenuViewController: UIViewController {
                                 btnCursos.isHidden = true
                                 btnMisCursos.isHidden = true
                 }
+                print("Sesión guardada:")
+                print("Email: \(email)")
+                print("Provider: \(provider)")
+                print("Rol: \(rol)")
             }
         }
         navigationItem.setHidesBackButton(true, animated: false)
@@ -47,9 +52,9 @@ class MenuViewController: UIViewController {
     
     
     @IBAction func btnCerrarSesion(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "sesion")
-        defaults.synchronize()
+        
+        self.defaults.removeObject(forKey: "sesion")
+        self.defaults.synchronize()
         
         
         switch self.provider{

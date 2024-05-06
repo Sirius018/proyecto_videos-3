@@ -55,9 +55,12 @@ class ViewController: UIViewController {
                             // Aquí puedes hacer lo que necesites con el usuario encontrado
                             print("Usuario encontrado: \(usuario_nuevo)")
                             self.usuarioLogueado = ["email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "basic"]
+                            self.defaults.set(self.usuarioLogueado, forKey: "sesion")
+                            self.defaults.synchronize()
+                            self.performSegue(withIdentifier: "menu", sender: nil)
                         }
                     }
-                    self.defaults.set(self.usuarioLogueado, forKey: "sesion")
+                    
                     self.defaults.synchronize()
                     print("Usuario logeado guardado con exito")
                     self.performSegue(withIdentifier: "menu", sender: nil)
@@ -162,8 +165,8 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="menu" {
-            self.defaults.set(self.usuarioLogueado, forKey: "sesion")
-            self.defaults.synchronize()
+            //self.defaults.set(self.usuarioLogueado, forKey: "sesion")
+            //self.defaults.synchronize()
             
                }
     }
