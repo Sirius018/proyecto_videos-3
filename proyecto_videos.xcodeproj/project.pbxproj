@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		47D5D1B9625C516B1D3325DF /* Pods_proyecto_videosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB0D84A3867CFD304E91228 /* Pods_proyecto_videosTests.framework */; };
 		AD092EB42BE871CE0068EED8 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD092EB32BE871CE0068EED8 /* Usuario.swift */; };
+		AD7D29242BE9324800D75DEA /* EditarAlumnoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29232BE9324800D75DEA /* EditarAlumnoViewController.swift */; };
+		AD7D29262BE9330700D75DEA /* ItemAlumnoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29252BE9330700D75DEA /* ItemAlumnoTableViewCell.swift */; };
 		AD9F80812BE554FA00990132 /* RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */; };
 		AD9F80852BE59A5400990132 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9F80842BE59A5400990132 /* GoogleService-Info.plist */; };
 		AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */; };
@@ -18,7 +20,6 @@
 		ADC254182BE27E1400F3459C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254172BE27E1400F3459C /* MenuViewController.swift */; };
 		ADC2541A2BE2846400F3459C /* CursoItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254192BE2846400F3459C /* CursoItemCollectionViewCell.swift */; };
 		ADC254222BE2FF5B00F3459C /* Alumno.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254212BE2FF5B00F3459C /* Alumno.swift */; };
-		ADC254242BE2FFE000F3459C /* ControladorAlumno.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC254232BE2FFE000F3459C /* ControladorAlumno.swift */; };
 		ADD100E32BE6E9AA00C3E965 /* AlumnoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD100E22BE6E9AA00C3E965 /* AlumnoViewController.swift */; };
 		ADD100E52BE6EE5100C3E965 /* NuevoAlumnoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD100E42BE6EE5100C3E965 /* NuevoAlumnoViewController.swift */; };
 		B708DC042BDEEDC300F36799 /* HelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708DC032BDEEDC300F36799 /* HelperViewController.swift */; };
@@ -62,6 +63,8 @@
 		5099B1EDF165AB83E0239562 /* Pods-proyecto_videos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proyecto_videos.release.xcconfig"; path = "Target Support Files/Pods-proyecto_videos/Pods-proyecto_videos.release.xcconfig"; sourceTree = "<group>"; };
 		595ACCE14F2D1B67E50AE34C /* Pods-proyecto_videos-proyecto_videosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proyecto_videos-proyecto_videosUITests.release.xcconfig"; path = "Target Support Files/Pods-proyecto_videos-proyecto_videosUITests/Pods-proyecto_videos-proyecto_videosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AD092EB32BE871CE0068EED8 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		AD7D29232BE9324800D75DEA /* EditarAlumnoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarAlumnoViewController.swift; sourceTree = "<group>"; };
+		AD7D29252BE9330700D75DEA /* ItemAlumnoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAlumnoTableViewCell.swift; sourceTree = "<group>"; };
 		AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseViewController.swift; sourceTree = "<group>"; };
 		AD9F80842BE59A5400990132 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfesorViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +74,6 @@
 		ADC254172BE27E1400F3459C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ADC254192BE2846400F3459C /* CursoItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursoItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADC254212BE2FF5B00F3459C /* Alumno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alumno.swift; sourceTree = "<group>"; };
-		ADC254232BE2FFE000F3459C /* ControladorAlumno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorAlumno.swift; sourceTree = "<group>"; };
 		ADD100E22BE6E9AA00C3E965 /* AlumnoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlumnoViewController.swift; sourceTree = "<group>"; };
 		ADD100E42BE6EE5100C3E965 /* NuevoAlumnoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoAlumnoViewController.swift; sourceTree = "<group>"; };
 		B708DC032BDEEDC300F36799 /* HelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperViewController.swift; sourceTree = "<group>"; };
@@ -192,9 +194,10 @@
 		ADC254152BE27D0000F3459C /* usuarios */ = {
 			isa = PBXGroup;
 			children = (
-				ADC254232BE2FFE000F3459C /* ControladorAlumno.swift */,
 				ADD100E22BE6E9AA00C3E965 /* AlumnoViewController.swift */,
 				ADD100E42BE6EE5100C3E965 /* NuevoAlumnoViewController.swift */,
+				AD7D29232BE9324800D75DEA /* EditarAlumnoViewController.swift */,
+				AD7D29252BE9330700D75DEA /* ItemAlumnoTableViewCell.swift */,
 			);
 			path = usuarios;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADD100E32BE6E9AA00C3E965 /* AlumnoViewController.swift in Sources */,
+				AD7D29262BE9330700D75DEA /* ItemAlumnoTableViewCell.swift in Sources */,
 				AD9F80812BE554FA00990132 /* RegistrarseViewController.swift in Sources */,
 				B738BF4C2BDE9DDE0064ADA2 /* ViewController.swift in Sources */,
 				ADC254222BE2FF5B00F3459C /* Alumno.swift in Sources */,
@@ -530,8 +534,8 @@
 				B738BF522BDE9DDE0064ADA2 /* proyecto_videos.xcdatamodeld in Sources */,
 				ADD100E52BE6EE5100C3E965 /* NuevoAlumnoViewController.swift in Sources */,
 				AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */,
-				ADC254242BE2FFE000F3459C /* ControladorAlumno.swift in Sources */,
 				B738BF4A2BDE9DDE0064ADA2 /* SceneDelegate.swift in Sources */,
+				AD7D29242BE9324800D75DEA /* EditarAlumnoViewController.swift in Sources */,
 				AD9F808A2BE5DAA100990132 /* ItemmProfesorTableViewCell.swift in Sources */,
 				B75CC10A2BE80F1E0084357A /* CursosViewController.swift in Sources */,
 				B75CC1062BE80DEA0084357A /* Cursos.swift in Sources */,
