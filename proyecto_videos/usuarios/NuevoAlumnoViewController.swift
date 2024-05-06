@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class NuevoAlumnoViewController: UIViewController {
     @IBOutlet weak var txtNombre: UITextField!
@@ -25,21 +26,32 @@ class NuevoAlumnoViewController: UIViewController {
         ape = txtApellido.text ?? ""
         cor = txtCorreo.text ?? ""
         cla = txtClave.text ?? ""
-        let alu = Alumno(id: 0, nombre: nom, apellido: ape, rol: cor, email: cor, password: cla)
-        ControladorAlumno().saveAlumno(bean: alu)
+        let bean = Alumno(id: 0, nombre: nom, apellido: ape, rol: "Alumno", email: cor, password: cla)
+        grabarAlumno(bean: bean)
     }
     
     @IBAction func btnVolver(_ sender: UIButton) {
-        dismiss(animated: true)
+        if let viewController = presentingViewController as? AlumnoViewController {
+            viewController.cargarAlumnos()
+            viewController.tvAlumnos.reloadData()
+            dismiss(animated: true)
+        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func grabarAlumno(bean: Alumno) {
+        AF.request("https://api-moviles-2.onrender.com/alumnos", method: .post, parameters: bean, encoder: JSONParameterEncoder.default).response(completionHandler: { info in
+            switch info.result {
+            case .success(let data):
+                do {
+                    let row = try JSONDecoder().decode(Alumno.self, from: data!)
+                    print("Alumno agregado " + String(row.id))
+                } catch {
+                    print("Error en el JSON")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
     }
-    */
 
 }

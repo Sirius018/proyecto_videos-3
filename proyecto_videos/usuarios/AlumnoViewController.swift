@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tvAlumnos: UITableView!
@@ -14,7 +15,10 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        cargarAlumnos()
+        tvAlumnos.dataSource = self
+        tvAlumnos.delegate = self
+        tvAlumnos.rowHeight = 100
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,10 +35,51 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "editarAlumno", sender: nil)
     }
+    /*
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let eliminarAlumnoSwipe = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+            self.eliminarAlumno(cod: self.arregloAlumnos[self.tvAlumnos.indexPathForSelectedRow!.row].id)
+            self.tvAlumnos.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        return UISwipeActionsConfiguration(actions: [eliminarAlumnoSwipe])
+    }
+    */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editarAlumno" {
+            let v2 = segue.destination as! EditarAlumnoViewController
+            v2.bean = arregloAlumnos[tvAlumnos.indexPathForSelectedRow!.row]
+        }
+    }
 	
     @IBAction func btnNuevo(_ sender: UIButton) {
         performSegue(withIdentifier: "nuevoAlumno", sender: nil)
     }
     
+    @IBAction func regresarCrudAlumno(segue:UIStoryboardSegue!){
+        self.cargarAlumnos()
+        self.tvAlumnos.reloadData()
+        //dismiss(animated: true)
+    }
+    
+    func cargarAlumnos() {
+        AF.request("https://api-moviles-2.onrender.com/usuarios").responseDecodable(of: [Alumno].self) { data  in
+            guard let info = data.value else { return }
+            self.arregloAlumnos = info
+            self.tvAlumnos.reloadData()
+        }
+    };
+    
+    func eliminarAlumno(cod:Int) {
+        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+            switch info.result {
+            case .success(let data):
+                print("Alumno eliminado")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        })
+    }
 }
 	
