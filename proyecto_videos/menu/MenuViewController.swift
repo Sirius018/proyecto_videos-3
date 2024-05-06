@@ -1,24 +1,33 @@
 import UIKit
 
-/*import GoogleSignIn*/
+import GoogleSignIn
 import FirebaseAuth
 class MenuViewController: UIViewController {
 
     @IBOutlet weak var btnCursos: UIButton!
-    @IBOutlet weak var btnAlumnos: UIButton!
     @IBOutlet weak var btnMisCursos: UIButton!
     var email:String!
     var provider: String!
     
-    
+    let defaults = UserDefaults.standard
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblProvider: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblEmail.text = email
-        lblProvider.text = provider
+        if let sesion = defaults.value(forKey: "sesion") as? [String: Any] {
+            if let email = sesion["email"] as? String,
+               let provider = sesion["provider"] as? String,
+               let rol = sesion["rol"] as? String {
+                lblEmail.text = email
+                lblProvider.text = provider
+                if rol != "Alumno" {
+                                btnCursos.isHidden = true
+                                btnMisCursos.isHidden = true
+                }
+            }
+        }
         navigationItem.setHidesBackButton(true, animated: false)
         
     }
@@ -39,8 +48,7 @@ class MenuViewController: UIViewController {
     
     @IBAction func btnCerrarSesion(_ sender: UIButton) {
         let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "email")
-        defaults.removeObject(forKey: "provider")
+        defaults.removeObject(forKey: "sesion")
         defaults.synchronize()
         
         
@@ -49,7 +57,7 @@ class MenuViewController: UIViewController {
             firebaseLogOut()
         case "google":
             do {
-                /*GIDSignIn.sharedInstance()?.signOut()*/
+                GIDSignIn.sharedInstance.signOut()
                 firebaseLogOut()
             }
         default:

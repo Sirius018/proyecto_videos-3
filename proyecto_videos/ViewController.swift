@@ -10,24 +10,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtClave: UITextField!
     
     @IBOutlet weak var btnGoogle: UIButton!
-    var listaAlumnos: [Alumno] = [] // Lista de tipo Alumno
+    var listaUsuarios: [Usuario] = [] // Lista de tipo Alumno
     var provider = ""
+    let defaults = UserDefaults.standard
+    var usuarioLogueado:[String: Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Analytics Event
         
         txtClave.isSecureTextEntry = true
-        //obtenerUsuarios()
-        let defaults = UserDefaults.standard
+        obtenerUsuarios()
 
-       
-        if let email = defaults.value(forKey: "email") as? String,
-           let provider = defaults.value(forKey: "provider") as? String,
+        if let sesion = defaults.value(forKey: "sesion") as? [String: Any],
+           let email = sesion["email"] as? String,
+           let provider = sesion["provider"] as? String,
            !email.isEmpty, !provider.isEmpty {
-            print(email)
-            print("el proveedor es" + provider)
-            //self.navigationController?.popViewController(animated: true)
-            self.performSegue(withIdentifier: "menu", sender: self)
+           print(email)
+           print("El proveedor es " + provider)
+           //self.navigationController?.popViewController(animated: true)
+           self.performSegue(withIdentifier: "menu", sender: self)
         }
 
     }
@@ -36,32 +37,29 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "crearUsuario", sender: nil)
     }
     @IBAction func btnIniciar(_ sender: UIButton) {
-        /*
-        if txtUsuario.text?.isEmpty ?? true || txtClave.text?.isEmpty ?? true {
-                    // alerta para ingresar datos
-                    mostrarAlerta(mensaje: "Por favor ingrese usuario y clave")
-                } else {
-                    // Verificar las credenciales ingresadas
-                    if verificarCredenciales(usuario: txtUsuario.text!, contraseña: txtClave.text!) {
-                        // Credenciales correctas, proceder a la siguiente pantalla
-                        performSegue(withIdentifier: "menu", sender: nil)
-                    } else {
-                        // Credenciales incorrectas, mostrar alerta
-                        mostrarAlerta(mensaje: "Inicio de sesión incorrecto")
-                    }
-                }
-        */
+       
         if let email=txtUsuario.text, let password = txtClave.text{
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if let result = result, error == nil{
                     self.provider = "basic"
                     var email = self.txtUsuario.text ?? ""
                     var provider = self.provider
-                    let defaults = UserDefaults.standard
-                    defaults.set(email, forKey: "email")
-                    defaults.set(provider, forKey: "provider")
-                    defaults.synchronize()
-                    print("hola")
+                    
+                    self.buscarUsuarioPorEmail(email: email) { usuario, error in
+                        if let error = error {
+                            print("Error al buscar usuario: \(error)")
+                            return
+                        }
+                        
+                        if let usuario_nuevo = usuario {
+                            // Aquí puedes hacer lo que necesites con el usuario encontrado
+                            print("Usuario encontrado: \(usuario_nuevo)")
+                            self.usuarioLogueado = ["email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "basic"]
+                        }
+                    }
+                    self.defaults.set(self.usuarioLogueado, forKey: "sesion")
+                    self.defaults.synchronize()
+                    print("Usuario logeado guardado con exito")
                     self.performSegue(withIdentifier: "menu", sender: nil)
                 } else {
                     self.mostrarAlerta(mensaje: "Se ha producido un error")
@@ -106,19 +104,27 @@ class ViewController: UIViewController {
                   return
                 }
                   // El usuario ha iniciado sesión correctamente, puedes acceder a authResult.user para obtener información del usuario
-                      let userID = authResult!.user.uid
-                      let userEmail = authResult!.user.email ?? ""
-                      let userName = authResult!.user.displayName ?? ""
+                      let email = authResult!.user.email ?? ""
+                      let nombre = authResult!.user.displayName ?? ""
+                  self.usuarioLogueado = ["email":email, "nombre":nombre, "apellido":"", "rol":"Alumno", "provider": "google"]
+                  self.buscarUsuarioPorEmail(email: email) { usuario, error in
+                      if let error = error {
+                          self.creaUsuario(id: 0, nombre: nombre, apellido: "", rol:"Alumno",email: email, password: "123456")
+                         
+                      }
+                      if let usuario_nuevo = usuario {
+                          // Aquí puedes hacer lo que necesites con el usuario encontrado
+                          print("Usuario encontrado: \(usuario_nuevo)")
+                          self.usuarioLogueado = ["email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "google"]
+                      }
+                  }
+
+                  self.defaults.set(self.usuarioLogueado, forKey: "sesion")
+                  self.defaults.synchronize()
                       
-                      // Guardar la información en UserDefaults
-                      let defaults = UserDefaults.standard
-                      defaults.set(userID, forKey: "userID")
-                      defaults.set(userEmail, forKey: "userEmail")
-                      defaults.set(userName, forKey: "userName")
-                      
-                      print("Usuario autenticado con Firebase: \(userID)")
-                      print("Email del usuario: \(userEmail)")
-                      print("Nombre del usuario: \(userName)")
+                     
+                      print("Email del usuario: \(email)")
+                      print("Nombre del usuario: \(nombre)")
                 // El usuario ha iniciado sesión correctamente, puedes acceder a authResult.user para obtener información del usuario
                 print("Usuario autenticado con Firebase: \(authResult!.user.uid)")
                   self.performSegue(withIdentifier: "menu", sender: nil)
@@ -127,13 +133,49 @@ class ViewController: UIViewController {
     
         
     }
+    func creaUsuario(id:Int, nombre:String, apellido:String,rol:String, email:String, password:String){
+        let parametros: [String: Any] = [
+                                "id": id,
+                                "nombre": nombre,
+                                "apellido":apellido,
+                                "rol":rol,
+                                "email":email,
+                                "password":password
+                            ]
+
+                            AF.request("https://api-moviles-2.onrender.com/usuarios", method: .post, parameters: parametros, encoding: JSONEncoding.default, headers: nil)
+                                .validate()
+                                .responseJSON { response in
+                                    switch response.result {
+                                    case .success:
+                                        print("Registro exitoso")
+                                        self.mostrarAlerta(mensaje: "Registro Exitoso" )
+                                        
+                                    case .failure(let error):
+                                        print("Error al registrar: \(error)")
+                                        
+                                    }
+                                }
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="menu" {
-            //let p2 = segue.destination as! MenuViewController
-            //p2.provider = self.provider
+            self.defaults.set(self.usuarioLogueado, forKey: "sesion")
+            self.defaults.synchronize()
             
                }
     }
+    func obtenerUsuarioEmail(email:String) -> Usuario?{
+        // Busca el usuario con el correo y contraseña proporcionados
+        var usuario = self.listaUsuarios.first(where: { $0.email == email})
+            // Usuario encontrado, puedes iniciar sesión aquí
+        return usuario
+       
+    }
+    
+    
     func obtenerUsuarios() {
             // URL del API
             let url = "https://api-moviles-2.onrender.com/usuarios"
@@ -141,14 +183,14 @@ class ViewController: UIViewController {
             // Realizar la solicitud Alamofire para obtener los usuarios
             AF.request(url)
                 .validate(statusCode: 200..<300)
-                .responseDecodable(of: [Alumno].self) { response in
+                .responseDecodable(of: [Usuario].self) { response in
                     switch response.result {
-                    case .success(let alumnos):
+                    case .success(let usuarios):
                         // Almacenar los alumnos en la lista
-                        self.listaAlumnos = alumnos
+                        self.listaUsuarios = usuarios
                         // Aquí puedes manejar los datos de los alumnos si es necesario
-                        for alumno in self.listaAlumnos {
-                            print("ID: \(alumno.id), Nombre: \(alumno.nombre), Apellido: \(alumno.apellido), Password \(alumno.password)")
+                        for usuario in self.listaUsuarios {
+                            print("ID: \(usuario.id), Nombre: \(usuario.nombre), Apellido: \(usuario.apellido), email \(usuario.email)")
                         }
                     case .failure(let error):
                         // Manejar el error en caso de que falle la solicitud
@@ -159,7 +201,7 @@ class ViewController: UIViewController {
     
     func verificarCredenciales(usuario: String, contraseña: String) -> Bool {
             // Verificar si existe algún alumno con las credenciales ingresadas
-            for alumno in listaAlumnos {
+            for alumno in listaUsuarios {
                 if alumno.email == usuario && alumno.password == contraseña {
                     return true // Credenciales correctas
                 }
@@ -184,5 +226,27 @@ class ViewController: UIViewController {
                     self.mostrarAlerta(mensaje: "Se ha producido un error")
                 }
     }
+    
+    func buscarUsuarioPorEmail(email: String, completionHandler: @escaping (Usuario?, Error?) -> Void) {
+        // URL de la API y endpoint para buscar usuarios por email
+        let urlString = "https://api-moviles-2.onrender.com/usuarios/\(email)"
+        
+        // Configurar los parámetros de la solicitud POST si es necesario
+        let parameters: [String: Any] = [
+            "email": email
+            // Aquí puedes agregar más parámetros si es necesario
+        ]
+        
+        // Realizar la solicitud con Alamofire
+        AF.request(urlString, method: .post, parameters: parameters).validate().responseDecodable(of: Usuario.self) { response in
+            switch response.result {
+            case .success(let usuario):
+                completionHandler(usuario, nil)
+            case .failure(let error):
+                completionHandler(nil, error)
+            }
+        }
+    }
+
 }
 
