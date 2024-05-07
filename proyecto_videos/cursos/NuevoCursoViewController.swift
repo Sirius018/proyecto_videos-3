@@ -33,11 +33,11 @@ class NuevoCursoViewController: UIViewController {
             let categoria =  dropDown.selectedItem ?? ""
 
             // Crear el objeto curso
-        let curso = Cursos(id: 0, nombre: "",  descripcion: "",caracteristicas: "", categoria: "", estado: "Creado", idProfesor: 35, precio: 34.4)
+        let curso = Cursos(id: 0, nombre: nombre,  descripcion: descripcion,caracteristicas: caracteristicas, categoria: categoria, estado: "Creado", idProfesor: 35, precio: precio)
 
 
         grabarCurso(bean: curso)
-        
+        self.performSegue(withIdentifier: "regresarCrudCurso", sender: nil)
     }
     
 

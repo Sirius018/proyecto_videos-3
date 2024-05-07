@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                         if let usuario_nuevo = usuario {
                             // Aquí puedes hacer lo que necesites con el usuario encontrado
                             print("Usuario encontrado: \(usuario_nuevo)")
-                            self.usuarioLogueado = ["email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "basic"]
+                            self.usuarioLogueado = ["id":usuario_nuevo.id, "email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "basic"]
                             self.defaults.set(self.usuarioLogueado, forKey: "sesion")
                             self.defaults.synchronize()
                             self.performSegue(withIdentifier: "menu", sender: nil)
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
                   // El usuario ha iniciado sesión correctamente, puedes acceder a authResult.user para obtener información del usuario
                       let email = authResult!.user.email ?? ""
                       let nombre = authResult!.user.displayName ?? ""
-                  self.usuarioLogueado = ["email":email, "nombre":nombre, "apellido":"", "rol":"Alumno", "provider": "google"]
+                  self.usuarioLogueado = ["id":0, "email":email, "nombre":nombre, "apellido":"", "rol":"Alumno", "provider": "google"]
                   self.buscarUsuarioPorEmail(email: email) { usuario, error in
                       if let error = error {
                           self.creaUsuario(id: 0, nombre: nombre, apellido: "", rol:"Alumno",email: email, password: "123456")
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
                       if let usuario_nuevo = usuario {
                           // Aquí puedes hacer lo que necesites con el usuario encontrado
                           print("Usuario encontrado: \(usuario_nuevo)")
-                          self.usuarioLogueado = ["email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "google"]
+                          self.usuarioLogueado  = ["id":usuario_nuevo.id,"email":email, "nombre":usuario_nuevo.nombre, "apellido":usuario_nuevo.apellido, "rol":usuario_nuevo.rol, "provider": "google"]
                       }
                   }
 
