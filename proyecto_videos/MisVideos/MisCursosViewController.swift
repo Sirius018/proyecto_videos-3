@@ -9,12 +9,13 @@ import UIKit
 import Alamofire
 class MisCursosViewController: UIViewController , UITableViewDataSource,UITableViewDelegate{
     
-    let defaults = UserDefaults.standard
+    
 
     
     @IBOutlet weak var tvMisCursos: UITableView!
+    let defaults = UserDefaults.standard
     var arregloMisCurso:[Cursos]=[]
-    var bean:Profesor!
+    //var bean:Cursos!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,12 @@ class MisCursosViewController: UIViewController , UITableViewDataSource,UITableV
         let idUsuario = sesion!["id"]  as? Int
         print(idUsuario)
             // Llamamos a la función buscarCursos con el idUsuario obtenido
-        buscarCursos(idUsuario: 10)
+        buscarCursos(idUsuario: "10")
        
 
         tvMisCursos.dataSource=self
         tvMisCursos.delegate = self
-        tvMisCursos.rowHeight=120
+        tvMisCursos.rowHeight=250
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,27 +46,35 @@ class MisCursosViewController: UIViewController , UITableViewDataSource,UITableV
         performSegue(withIdentifier: "verClasePorCurso", sender: nil)
 
     }
-    func buscarCursos(idUsuario: Int) {
+    func buscarCursos(idUsuario: String) {
         // URL de la API y endpoint para buscar usuarios por email
-        let urlString = "https://api-moviles-2.onrender.com/cursosPorusuario"
+        let urlString = "https://api-moviles-2.onrender.com/cursosPorusuario/\(idUsuario)"
         
         // Configurar los parámetros de la solicitud POST si es necesario
         let parameters: [String: Any] = [
             "id": idUsuario
-            // Aquí puedes agregar más parámetros si es necesario
         ]
         
-        // Realizar la solicitud con Alamofire
         AF.request(urlString, method: .post, parameters: parameters).responseDecodable(of: [Cursos].self) { response in
             switch response.result {
-            case .success(let usuario):
-                self.arregloMisCurso = usuario
-                print(usuario)
-                self.tvMisCursos.reloadData()
+            case .success(let cursos):
+                // Imprimir la respuesta del servidor antes de la deserialización
+                print("Respuesta del servidor:", cursos)
+                for curso in cursos {
+                    var bean = Cursos(id: curso.id, nombre: curso.nombre, descripcion: curso.descripcion, caracteristicas: curso.caracteristicas, categoria: curso.categoria, estado: curso.estado, idProfesor: curso.idProfesor, precio: curso.precio)
+                    
+                    self.arregloMisCurso.append(bean)
+                }
+                // Procesar la respuesta deserializada
                 
+                print(self.arregloMisCurso)
+                self.tvMisCursos.reloadData()
+                        
             case .failure(let error):
-                print("Error al cargar los profesores: \(error)")
+                print("Error al cargar los cursos: \(error)")
             }
         }
+
+
     }
 }

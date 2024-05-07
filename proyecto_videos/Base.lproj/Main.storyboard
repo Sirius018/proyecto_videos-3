@@ -1092,6 +1092,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ohL-Wb-BXK"/>
                     <connections>
+                        <outlet property="tvMisCursos" destination="7pL-PC-nPa" id="1d3-xz-djm"/>
                         <segue destination="d1T-k4-AsG" kind="show" identifier="verClasePorCurso" id="6Hy-6t-M0a"/>
                     </connections>
                 </viewController>
