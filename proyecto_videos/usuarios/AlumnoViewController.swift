@@ -35,16 +35,33 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "editarAlumno", sender: nil)
     }
-    /*
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let eliminarAlumnoSwipe = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
-            self.eliminarAlumno(cod: self.arregloAlumnos[self.tvAlumnos.indexPathForSelectedRow!.row].id)
-            self.tvAlumnos.deleteRows(at: [indexPath], with: .fade)
-            completionHandler(true)
+            
+            
+            let ventana = UIAlertController(title: "Sistema", message: "Seguro de eliminar?", preferredStyle: .alert)
+            
+            let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
+                // Eliminar el elemento de la lista
+                self.eliminarAlumno(cod: self.arregloAlumnos[indexPath.row].id)
+                // Actualizar la tabla
+                tableView.beginUpdates()
+                self.arregloAlumnos.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+            }
+            
+            ventana.addAction(botonAceptar)
+            ventana.addAction(UIAlertAction(title: "No", style: .cancel))
+            
+            self.present(ventana, animated: true, completion: nil)
+            
+            completionHandler(true)         
         }
         return UISwipeActionsConfiguration(actions: [eliminarAlumnoSwipe])
     }
-    */
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editarAlumno" {
             let v2 = segue.destination as! EditarAlumnoViewController
