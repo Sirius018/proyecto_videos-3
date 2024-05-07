@@ -28,6 +28,7 @@ class NuevoAlumnoViewController: UIViewController {
         cla = txtClave.text ?? ""
         let bean = Alumno(id: 0, nombre: nom, apellido: ape, rol: "Alumno", email: cor, password: cla)
         grabarAlumno(bean: bean)
+        
     }
     
     @IBAction func btnVolver(_ sender: UIButton) {
@@ -44,6 +45,12 @@ class NuevoAlumnoViewController: UIViewController {
             case .success(let data):
                 do {
                     let row = try JSONDecoder().decode(Alumno.self, from: data!)
+                    let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(row.id) + " agregado.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+                    }
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true)
                     print("Alumno agregado " + String(row.id))
                 } catch {
                     print("Error en el JSON")
@@ -53,5 +60,4 @@ class NuevoAlumnoViewController: UIViewController {
             }
         })
     }
-
 }

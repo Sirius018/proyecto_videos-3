@@ -67,6 +67,7 @@ class NuevoProfesorViewController: UIViewController {
                     let row = try JSONDecoder().decode(Profesor.self, from: data!)
                     print("Profesor agregado " + String(row.id))
                 } catch {
+                    print(info)
                     print("Error en el JSON")
                 }
             case .failure(let error):

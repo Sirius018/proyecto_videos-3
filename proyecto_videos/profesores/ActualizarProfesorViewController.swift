@@ -41,6 +41,25 @@ class ActualizarProfesorViewController: UIViewController {
         
     }
     
+    @IBAction func btnEliminar(_ sender: UIButton) {/*
+        var ventana = UIAlertController(title: "Sistema", message: "¿Seguro de eliminar?", preferredStyle: .alert)
+        var botonSI = UIAlertAction(title: "SI", style: .default, handler: { action in
+            self.eliminarAlumno(cod: self.bean.id)
+            self.bean.id = 0
+            self.bean.nombre = ""
+            self.bean.apellido = ""
+            self.bean.email = ""
+            self.bean.password = ""
+            self.txtNombre.text = self.bean.nombre
+            self.txtApellido.text = self.bean.apellido
+            self.txtCorreo.text = self.bean.email
+            self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+        })
+        ventana.addAction(botonSI)
+        ventana.addAction(UIAlertAction(title: "NO", style: .cancel))
+        self.present(ventana, animated: true, completion: nil)*/
+    }
+    
     @IBAction func btnVolver(_ sender: Any) {
         dismiss(animated: true)
 
@@ -63,6 +82,17 @@ class ActualizarProfesorViewController: UIViewController {
         })
     }
     
+    func eliminarProfesor(cod:Int) {
+        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+            switch info.result {
+            case .success(let data):
+                print("Profesor eliminado")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        })
+    }
    
     
     

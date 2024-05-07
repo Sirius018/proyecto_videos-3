@@ -67,6 +67,8 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
         if segue.identifier == "editarAlumno" {
             let v2 = segue.destination as! EditarAlumnoViewController
             v2.bean = arregloAlumnos[tvAlumnos.indexPathForSelectedRow!.row]
+        } else {
+            
         }
     }
 	
@@ -81,7 +83,7 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     }
     
     func cargarAlumnos() {
-        AF.request("https://api-moviles-2.onrender.com/usuarios").responseDecodable(of: [Alumno].self) { data  in
+        AF.request("https://api-moviles-2.onrender.com/alumnos").responseDecodable(of: [Alumno].self) { data  in
             guard let info = data.value else { return }
             self.arregloAlumnos = info
             self.tvAlumnos.reloadData()

@@ -39,8 +39,39 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
     }
     
     
-  
-   
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let eliminarProfesorSwipe = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
+            
+            
+            let ventana = UIAlertController(title: "Sistema", message: "Seguro de eliminar?", preferredStyle: .alert)
+            
+            let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
+                // Eliminar el elemento de la lista
+                self.eliminarProfesor(cod: self.arregloProfesores[indexPath.row].id)
+                // Actualizar la tabla
+                tableView.beginUpdates()
+                self.arregloProfesores.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+            }
+            
+            ventana.addAction(botonAceptar)
+            ventana.addAction(UIAlertAction(title: "No", style: .cancel))
+            
+            self.present(ventana, animated: true, completion: nil)
+            
+            completionHandler(true)
+        }
+        eliminarProfesorSwipe.image = UIImage(named: "trash_can")
+        return UISwipeActionsConfiguration(actions: [eliminarProfesorSwipe])
+    }
+    
+    @IBAction func regresarCrudProfesor(segue:UIStoryboardSegue!){
+        self.cargarProfesores()
+        self.tvProfe.reloadData()
+        //dismiss(animated: true)
+    }
   
     
     func cargarProfesores() {
@@ -81,4 +112,15 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
         }
         
     }
-}
+    
+    func eliminarProfesor(cod:Int) {
+        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+            switch info.result {
+            case .success(let data):
+                print("Profesor eliminado")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        })
+    }}

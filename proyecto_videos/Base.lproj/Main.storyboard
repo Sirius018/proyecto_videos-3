@@ -189,6 +189,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="VOLVER"/>
                                 <connections>
                                     <action selector="btnVolver:" destination="pu0-g7-zC1" eventType="touchUpInside" id="4db-1Z-6Km"/>
+                                    <segue destination="guL-aJ-hQF" kind="unwind" unwindAction="regresarCrudProfesorWithSegue:" id="kNu-4A-zoF"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjb-rh-ban">
@@ -217,6 +218,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqR-Kd-cVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="guL-aJ-hQF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-6822.1374045801522" y="206.33802816901411"/>
         </scene>
@@ -300,6 +302,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="VOLVER"/>
                                 <connections>
                                     <action selector="btnVolver:" destination="UjL-yA-BzQ" eventType="touchUpInside" id="vMm-jt-fiM"/>
+                                    <segue destination="gSQ-4G-7Z0" kind="unwind" unwindAction="regresarCrudProfesorWithSegue:" id="J95-aG-Nf7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URj-gp-RUm">
@@ -309,6 +312,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQu-lG-i7d">
+                                <rect key="frame" x="121" y="670" width="150" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ELIMINAR"/>
+                                <connections>
+                                    <action selector="btnEliminar:" destination="UjL-yA-BzQ" eventType="touchUpInside" id="ZCx-nK-tTg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1gI-S6-Hct"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -322,6 +336,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rri-n5-zPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gSQ-4G-7Z0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-5727.480916030534" y="-178.16901408450704"/>
         </scene>
@@ -487,7 +502,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Volver"/>
                                 <connections>
                                     <action selector="btnVolver:" destination="rFh-bI-0zI" eventType="touchUpInside" id="afH-ql-In1"/>
-                                    <segue destination="cDO-kX-hbl" kind="unwind" unwindAction="regresarCrudAlumnoWithSegue:" id="1hx-sq-ro9"/>
+                                    <segue destination="cDO-kX-hbl" kind="unwind" identifier="regresarCrudAlumno" unwindAction="regresarCrudAlumnoWithSegue:" id="1hx-sq-ro9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1125,8 +1140,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-pM-hHm">
-                                                    <rect key="frame" x="148" y="40" width="237" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-pM-hHm">
+                                                    <rect key="frame" x="148" y="40" width="237" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1161,7 +1176,6 @@
                                 <buttonConfiguration key="configuration" style="plain" image="student_icon" title="Nuevo alumno"/>
                                 <connections>
                                     <action selector="btnNuevo:" destination="na0-dS-iua" eventType="touchUpInside" id="WQB-bV-tVM"/>
-                                    <segue destination="rFh-bI-0zI" kind="show" identifier="nuevoAlumno" id="bdl-p3-Cej"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1172,6 +1186,7 @@
                     <connections>
                         <outlet property="tvAlumnos" destination="2GS-nA-xPl" id="cvA-Re-qFn"/>
                         <segue destination="kv2-Rd-wQj" kind="show" identifier="editarAlumno" id="1wt-Wa-lTZ"/>
+                        <segue destination="rFh-bI-0zI" kind="show" identifier="nuevoAlumno" id="ZIX-IP-yFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvn-Ai-eIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1252,7 +1267,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Volver"/>
                                 <connections>
                                     <action selector="btnVolver:" destination="kv2-Rd-wQj" eventType="touchUpInside" id="KaO-HD-buI"/>
-                                    <segue destination="wFE-zS-ndZ" kind="unwind" unwindAction="regresarCrudAlumnoWithSegue:" id="wU8-no-dAi"/>
+                                    <segue destination="wFE-zS-ndZ" kind="unwind" identifier="regresarCrudAlumno" unwindAction="regresarCrudAlumnoWithSegue:" id="wU8-no-dAi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdz-O3-rja">

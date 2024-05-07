@@ -44,6 +44,7 @@ class EditarAlumnoViewController: UIViewController {
             self.txtNombre.text = self.bean.nombre
             self.txtApellido.text = self.bean.apellido
             self.txtCorreo.text = self.bean.email
+            self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
         })
         ventana.addAction(botonSI)
         ventana.addAction(UIAlertAction(title: "NO", style: .cancel))
