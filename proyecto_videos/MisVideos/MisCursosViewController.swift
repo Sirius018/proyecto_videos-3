@@ -77,4 +77,9 @@ class MisCursosViewController: UIViewController , UITableViewDataSource,UITableV
 
 
     }
+    
+    @IBAction func regresarMisCursos(segue:UIStoryboardSegue!){
+        
+        //dismiss(animated: true)
+    }
 }
