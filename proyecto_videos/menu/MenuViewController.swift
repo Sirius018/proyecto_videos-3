@@ -41,6 +41,10 @@ class MenuViewController: UIViewController {
         performSegue(withIdentifier: "showVerCursos", sender: nil)
     }
     
+    @IBAction func btnMisCursos(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "verMisCursos", sender: nil)
+    }
     
     
     @IBAction func btnProfesor(_ sender: UIButton) {
@@ -56,7 +60,10 @@ class MenuViewController: UIViewController {
                }
            }
     }
-    
+    @IBAction func regresarMenuPerfil(segue:UIStoryboardSegue!){
+        
+        //dismiss(animated: true)
+    }
     
     
     @IBAction func btnCerrarSesion(_ sender: UIButton) {

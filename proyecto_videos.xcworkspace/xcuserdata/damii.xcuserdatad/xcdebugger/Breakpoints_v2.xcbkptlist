@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9017B778-C7FA-46E5-8DDF-449AC9D91EA7"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFBDCEF6-6CD7-44F7-8C1C-2FBFCC3770C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "proyecto_videos/entidades/Cursos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "Cursos"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "EFBDCEF6-6CD7-44F7-8C1C-2FBFCC3770C3 - bc99f04f51ab55b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "proyecto_videos.Cursos.init(nombre: Swift.String, descripcion: Swift.String, categoria: Swift.String, estado: Swift.String, idProfesor: Swift.Int, activo: Swift.Bool) -&gt; proyecto_videos.Cursos"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/damii/Documents/proyecto_videos-3/proyecto_videos/entidades/Cursos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "EFBDCEF6-6CD7-44F7-8C1C-2FBFCC3770C3 - d8e0555a6d0ee8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "proyecto_videos.Cursos.init(id: Swift.Int, nombre: Swift.String, caracteristicas: Swift.String, descripcion: Swift.String, categoria: Swift.String, estado: Swift.String, idProfesor: Swift.Int, activo: Swift.Bool) -&gt; proyecto_videos.Cursos"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/damii/Documents/proyecto_videos-3/proyecto_videos/entidades/Cursos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "EFBDCEF6-6CD7-44F7-8C1C-2FBFCC3770C3 - 83ce9fd8b317cd2f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "proyecto_videos.Cursos.init(id: Swift.Int, nombre: Swift.String, descripcion: Swift.String, caracteristicas: Swift.String, categoria: Swift.String, estado: Swift.String, idProfesor: Swift.Int, precio: Swift.Double) -&gt; proyecto_videos.Cursos"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/damii/Documents/proyecto_videos-3/proyecto_videos/entidades/Cursos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

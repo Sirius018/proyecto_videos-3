@@ -1,8 +1,11 @@
 import UIKit
 
 struct Profesor:Codable{
-    var idProfesor:Int
-    var nombreProfesor:String
-    
+    var id:Int
+    var nombre:String
+    var apellido : String
+    var rol: String
+    var email: String
+    var password : String
     
 }

@@ -27,8 +27,8 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var celda = tvAlumnos.dequeueReusableCell(withIdentifier: "item") as! ItemAlumnoTableViewCell
-        celda.lblNombre.text = "Nombre: " + arregloAlumnos[indexPath.row].nombre
-        celda.lblApellido.text = "Apellido: " + arregloAlumnos[indexPath.row].apellido
+        celda.imgAlumno.image = UIImage(named: "alumno1")
+        celda.lblNombre.text = arregloAlumnos[indexPath.row].nombre + " " + arregloAlumnos[indexPath.row].apellido
         return celda
     }
     
@@ -37,7 +37,7 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let eliminarAlumnoSwipe = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+        let eliminarAlumnoSwipe = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
             
             
             let ventana = UIAlertController(title: "Sistema", message: "Seguro de eliminar?", preferredStyle: .alert)
@@ -59,6 +59,7 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
             
             completionHandler(true)         
         }
+        eliminarAlumnoSwipe.image = UIImage(named: "trash_can")
         return UISwipeActionsConfiguration(actions: [eliminarAlumnoSwipe])
     }
     
