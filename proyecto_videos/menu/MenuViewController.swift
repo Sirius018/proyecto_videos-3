@@ -24,7 +24,7 @@ class MenuViewController: UIViewController {
                 lblEmail.text = email
                 lblProvider.text = provider
                 if rol != "Alumno" {
-                                btnCursos.isHidden = true
+                             //   btnCursos.isHidden = true
                                 btnMisCursos.isHidden = true
                 }
                 print("Sesión guardada:")
@@ -37,6 +37,9 @@ class MenuViewController: UIViewController {
         
     }
     
+    @IBAction func btnVerCursosAddEventListener(_ sender: UIButton) {
+        performSegue(withIdentifier: "showVerCursos", sender: nil)
+    }
     
     
     
@@ -46,7 +49,12 @@ class MenuViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showVerCursos" {
+               // Asegúrate de que el destino del segue sea tu VerCursosViewController
+               if let verCursosVC = segue.destination as? VerCursosViewController {
+                   
+               }
+           }
     }
     
     
@@ -65,6 +73,7 @@ class MenuViewController: UIViewController {
                 GIDSignIn.sharedInstance.signOut()
                 firebaseLogOut()
             }
+            
         default:
             print("Hola")
         }

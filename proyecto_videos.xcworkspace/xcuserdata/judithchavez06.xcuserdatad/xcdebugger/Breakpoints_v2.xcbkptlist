@@ -3,4 +3,134 @@
    uuid = "49E44412-5E47-42CA-A7F0-C18BFF685C7E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6BF22259-E0A9-416F-9CC9-C16F5D4A9005"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "proyecto_videos/cursos/VerCursosViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "cargarCursos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6BF22259-E0A9-416F-9CC9-C16F5D4A9005 - bcb0946aa8f580e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "proyecto_videos.VerCursosViewController.cargarCursos() -&gt; ()"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/judithchavez06/Downloads/proyecto_videos/proyecto_videos/cursos/VerCursosViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "6BF22259-E0A9-416F-9CC9-C16F5D4A9005 - d46469067af00c6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Array&lt;proyecto_videos.Cursos&gt;, Alamofire.AFError&gt;) -&gt; () in proyecto_videos.VerCursosViewController.cargarCursos() -&gt; ()"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/judithchavez06/Downloads/proyecto_videos/proyecto_videos/cursos/VerCursosViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8E19D59-6C8C-42DD-A2B1-6693F587E293"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "proyecto_videos/cursos/VerCursosViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C8E19D59-6C8C-42DD-A2B1-6693F587E293 - a319f0e1b33e8edb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "proyecto_videos.VerCursosViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/judithchavez06/Downloads/proyecto_videos/proyecto_videos/cursos/VerCursosViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "C8E19D59-6C8C-42DD-A2B1-6693F587E293 - 2c281d058a08ef1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "proyecto_videos.VerCursosViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "proyecto_videos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/judithchavez06/Downloads/proyecto_videos/proyecto_videos/cursos/VerCursosViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "844">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B102F57B-D9D3-4BF3-8B95-B457F1E50CA2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "proyecto_videos/cursos/VerCursosViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F4EB3FD0-3856-4AF0-BE1E-AFC824C31C87"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "proyecto_videos/cursos/VerCursosViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -58,7 +58,7 @@ class NuevoCursoViewController: UIViewController {
             let activ = rbtnSi.isSelected
                     
             // Crear el objeto curso
-            let curso = Cursos(nombre: nombre, descripcion: descripcion, categoria: categoria, estado: estado, idProfesor: idProfesor, activo: true)
+        let curso = Cursos(nombre: nombre, descripcion: descripcion, categoria: categoria, estado: estado, idProfesor: idProfesor ,precio: 19.97)
             
             // Convertir el objeto curso a JSON
             guard let jsonData = try? JSONEncoder().encode(curso) else {

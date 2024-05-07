@@ -14,7 +14,7 @@ struct Cursos : Codable{
     var categoria :String
     var estado : String
     var idProfesor : Int
-    var activo : Bool
+    var precio : Double
     
 
     
