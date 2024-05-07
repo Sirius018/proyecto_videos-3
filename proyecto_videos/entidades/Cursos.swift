@@ -8,14 +8,15 @@
 import UIKit
 
 struct Cursos : Codable{
-
+    var id : Int
     var nombre : String
     var descripcion : String
+    var caracteristicas : String
     var categoria :String
     var estado : String
     var idProfesor : Int
-    var activo : Bool
-    
+    var precio : Double
 
     
 }
+

@@ -27,8 +27,8 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var celda = tvAlumnos.dequeueReusableCell(withIdentifier: "item") as! ItemAlumnoTableViewCell
-        celda.lblNombre.text = "Nombre: " + arregloAlumnos[indexPath.row].nombre
-        celda.lblApellido.text = "Apellido: " + arregloAlumnos[indexPath.row].apellido
+        celda.imgAlumno.image = UIImage(named: "alumno1")
+        celda.lblNombre.text = arregloAlumnos[indexPath.row].nombre + " " + arregloAlumnos[indexPath.row].apellido
         return celda
     }
     

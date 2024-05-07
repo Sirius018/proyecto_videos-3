@@ -4,59 +4,32 @@ import Alamofire
 
 class NuevoProfesorViewController: UIViewController {
 
-    @IBOutlet weak var txtIdProfesor: UITextField!
-    @IBOutlet weak var txtNombreProfesor: UITextField!
+    var listaProfesores:[Profesor]=[]
+
+    @IBOutlet weak var txtNombre: UITextField!
     
+    @IBOutlet weak var txtApellido: UITextField!
     
+    @IBOutlet weak var txtEmail: UITextField!
+    
+    @IBOutlet weak var txtPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func btnRegistrar(_ sender: UIButton) {
-        guard let idP = Int16(txtIdProfesor.text ?? "0"), let nombreP = txtNombreProfesor.text else {
-            mostrarAlertaError(mensaje: "Por favor, completa todos los campos.")
-            return
-        }
-
-        if nombreP.isEmpty {
-            mostrarAlertaError(mensaje: "Por favor, ingresa nombre del profesor.")
-        } else {
-            obtenerListaProfesores { profesores in
-                guard let profesores = profesores else {
-                    print("No se pudo obtener la lista de profesores.")
-                    return
-                }
-                
-                let idExistente = profesores.contains { $0.idProfesor == idP }
-                let nombreExistente = profesores.contains { $0.nombreProfesor == nombreP }
-                // valida que profesor no exista
-                if idExistente {
-                    self.mostrarAlertaError(mensaje: "El ID ya está en uso")
-                } else if nombreExistente {
-                    self.mostrarAlertaError(mensaje: "El nombre del profesor ya existe, usar otro")
-                } else {
-                    
-                    let parametros: [String: Any] = [
-                        "idProfesor": idP,
-                        "nombreProfesor": nombreP
-                    ]
-
-                    AF.request("https://api-moviles-2.onrender.com/profesores", method: .post, parameters: parametros, encoding: JSONEncoding.default, headers: nil)
-                        .validate()
-                        .responseJSON { response in
-                            switch response.result {
-                            case .success:
-                                print("Registro exitoso")
-                                self.mostrarMensajeExito()
-                                
-                            case .failure(let error):
-                                print("Error al registrar: \(error)")
-                            }
-                        }
-                }
-            }
-        }
+        
+        let nombre = txtNombre.text ?? ""
+        let apellidos = txtApellido.text ?? ""
+        let email = txtEmail.text ?? ""
+        let password = txtPassword.text ?? ""
+        
+        let profesor = Profesor(id: 0, nombre: nombre, apellido: apellidos, rol: "Profesor", email: email, password: password)
+        
+        grabarProfesor(bean: profesor)
+        
+        
     }
     
     
@@ -77,18 +50,31 @@ class NuevoProfesorViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    
-    func obtenerListaProfesores(completion: @escaping ([Profesor]?) -> Void) {
-        AF.request("https://api-moviles-2.onrender.com/profesores")
-            .responseDecodable(of: [Profesor].self) { response in
-                guard let profesores = response.value else {
-                    completion(nil)
-                    return
+    func cargarProfesores(){
+            AF.request("https://api-moviles-2.onrender.com/profesores")
+                .responseDecodable(of: [Profesor].self){ x in
+                    guard let info=x.value else {return}
+                    self.listaProfesores=info
+                    print(info)
                 }
-                completion(profesores)
-            }
     }
-    
+ 
+    func grabarProfesor(bean: Profesor) {
+        AF.request("https://api-moviles-2.onrender.com/profesores", method: .post, parameters: bean, encoder: JSONParameterEncoder.default).response(completionHandler: { info in
+            switch info.result {
+            case .success(let data):
+                do {
+                    let row = try JSONDecoder().decode(Profesor.self, from: data!)
+                    print("Profesor agregado " + String(row.id))
+                } catch {
+                    print("Error en el JSON")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+    }
+
     
     
     

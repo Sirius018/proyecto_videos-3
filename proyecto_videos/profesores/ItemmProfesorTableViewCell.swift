@@ -2,6 +2,9 @@ import UIKit
 
 class ItemmProfesorTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var imgProfesor: UIImageView!
+    
     @IBOutlet weak var lblIdProfe: UILabel!
     
     @IBOutlet weak var lblNombreProfe: UILabel!

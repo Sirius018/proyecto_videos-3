@@ -10,6 +10,8 @@ import UIKit
 class ItemAlumnoTableViewCell: UITableViewCell {
     @IBOutlet weak var lblNombre: UILabel!
     @IBOutlet weak var lblApellido: UILabel!
+    @IBOutlet weak var imgAlumno: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
