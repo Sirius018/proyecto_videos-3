@@ -52,7 +52,11 @@ class CursosViewController: UIViewController,UICollectionViewDataSource,
                     self.cvCursos.reloadData()
                 }
     }
-    
+    @IBAction func regresarCrudCurso(segue:UIStoryboardSegue!){
+        cargarCursos()
+        self.cvCursos.reloadData()
+        //dismiss(animated: true)
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          return CGSize(width: 180, height: 305)
     }
