@@ -1,9 +1,5 @@
 //
-//  NuevoCursoViewController.swift
-//  proyecto_videos
-//
-//  Created by DAMII on 5/05/24.
-//
+
 
 import UIKit
 import Alamofire
@@ -44,12 +40,7 @@ class NuevoCursoViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-   
-    
+
     
     @IBAction func btnCategoria(_ sender: UIButton) {
         
@@ -81,10 +72,6 @@ class NuevoCursoViewController: UIViewController {
         })
     }
 
-    
-    
-    
-    
     
 }
 

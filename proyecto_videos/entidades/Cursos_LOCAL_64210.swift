@@ -16,5 +16,7 @@ struct Cursos : Codable{
     var estado : String
     var idProfesor : Int
     var precio : Double
+
+    
 }
 

@@ -11,6 +11,8 @@
 		AD092EB42BE871CE0068EED8 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD092EB32BE871CE0068EED8 /* Usuario.swift */; };
 		AD7D29242BE9324800D75DEA /* EditarAlumnoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29232BE9324800D75DEA /* EditarAlumnoViewController.swift */; };
 		AD7D29262BE9330700D75DEA /* ItemAlumnoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29252BE9330700D75DEA /* ItemAlumnoTableViewCell.swift */; };
+		AD7D29282BE9C20200D75DEA /* VerCursosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29272BE9C20200D75DEA /* VerCursosViewController.swift */; };
+		AD7D292A2BE9D39200D75DEA /* ItemCursoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29292BE9D39200D75DEA /* ItemCursoCollectionViewCell.swift */; };
 		AD9F80812BE554FA00990132 /* RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */; };
 		AD9F80852BE59A5400990132 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9F80842BE59A5400990132 /* GoogleService-Info.plist */; };
 		AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */; };
@@ -66,6 +68,8 @@
 		AD092EB32BE871CE0068EED8 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		AD7D29232BE9324800D75DEA /* EditarAlumnoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarAlumnoViewController.swift; sourceTree = "<group>"; };
 		AD7D29252BE9330700D75DEA /* ItemAlumnoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAlumnoTableViewCell.swift; sourceTree = "<group>"; };
+		AD7D29272BE9C20200D75DEA /* VerCursosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerCursosViewController.swift; sourceTree = "<group>"; };
+		AD7D29292BE9D39200D75DEA /* ItemCursoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCursoCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseViewController.swift; sourceTree = "<group>"; };
 		AD9F80842BE59A5400990132 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfesorViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				B75CC1072BE80E040084357A /* NuevoCursoViewController.swift */,
 				ADC254192BE2846400F3459C /* CursoItemCollectionViewCell.swift */,
 				B75CC1092BE80F1E0084357A /* CursosViewController.swift */,
+				AD7D29272BE9C20200D75DEA /* VerCursosViewController.swift */,
+				AD7D29292BE9D39200D75DEA /* ItemCursoCollectionViewCell.swift */,
 			);
 			path = cursos;
 			sourceTree = "<group>";
@@ -526,6 +532,8 @@
 				B738BF482BDE9DDE0064ADA2 /* AppDelegate.swift in Sources */,
 				AD092EB42BE871CE0068EED8 /* Usuario.swift in Sources */,
 				AD9F808C2BE5DCC500990132 /* Profesor.swift in Sources */,
+				AD7D29282BE9C20200D75DEA /* VerCursosViewController.swift in Sources */,
+				AD7D292A2BE9D39200D75DEA /* ItemCursoCollectionViewCell.swift in Sources */,
 				B738BF522BDE9DDE0064ADA2 /* proyecto_videos.xcdatamodeld in Sources */,
 				ADD100E52BE6EE5100C3E965 /* NuevoAlumnoViewController.swift in Sources */,
 				AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */,
