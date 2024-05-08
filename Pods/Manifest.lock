@@ -1163,6 +1163,8 @@ PODS:
   - PromisesObjC (2.4.0)
   - RecaptchaInterop (100.0.0)
   - Toaster (2.3.0)
+  - XCDYouTubeKit (2.15.2)
+  - youtube-ios-player-helper (1.0.4)
   - YouTubePlayer-Swift (1.0)
 
 DEPENDENCIES:
@@ -1173,6 +1175,8 @@ DEPENDENCIES:
   - FirebaseFirestore
   - GoogleSignIn
   - Toaster
+  - XCDYouTubeKit
+  - youtube-ios-player-helper
   - YouTubePlayer-Swift
 
 SPEC REPOS:
@@ -1204,6 +1208,8 @@ SPEC REPOS:
     - PromisesObjC
     - RecaptchaInterop
     - Toaster
+    - XCDYouTubeKit
+    - youtube-ios-player-helper
     - YouTubePlayer-Swift
 
 SPEC CHECKSUMS:
@@ -1234,8 +1240,10 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+  XCDYouTubeKit: b120aced3d8638ffb570c5450cddb5a1dac448c7
+  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
   YouTubePlayer-Swift: ae82f4bcb504162a872b852596a9dc1fa3828c34
 
-PODFILE CHECKSUM: 87de447d455cab931a32bdf9a24d431cc6fae578
+PODFILE CHECKSUM: 0f8a204a24c492987064d33ce05e96b059d0cd40
 
 COCOAPODS: 1.15.2

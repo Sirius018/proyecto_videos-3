@@ -20,8 +20,9 @@ target 'proyecto_videos' do
   pod 'Toaster'
   pod 'YouTubePlayer-Swift' 
   #pod 'UIKit'
-  
+  pod 'XCDYouTubeKit'
   pod 'FirebaseAnalytics'
+  pod 'youtube-ios-player-helper'
 
   # For Analytics without IDFA collection capability, use this pod instead
   # pod ‘Firebase/AnalyticsWithoutAdIdSupport’

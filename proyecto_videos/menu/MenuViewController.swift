@@ -6,6 +6,10 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var btnCursos: UIButton!
     @IBOutlet weak var btnMisCursos: UIButton!
+    
+    @IBOutlet weak var btnCambiarClave: UIButton!
+    
+    
     var email:String!
     var provider: String!
     
@@ -20,13 +24,20 @@ class MenuViewController: UIViewController {
         if let sesion = self.defaults.value(forKey: "sesion") as? [String: Any] {
             if let email = sesion["email"] as? String,
                let provider = sesion["provider"] as? String,
-               let rol = sesion["rol"] as? String {
+               let rol = sesion["rol"] as? String,
+               let provider = sesion["provider"] as? String{
                 lblEmail.text = email
                 lblProvider.text = provider
                 if rol != "Alumno" {
-                             //   btnCursos.isHidden = true
+                               btnCursos.isHidden = true
                                 btnMisCursos.isHidden = true
                 }
+                if provider != "basic" {
+                               btnCambiarClave.isHidden = true
+                                
+                }
+                
+                
                 print("Sesión guardada:")
                 print("Email: \(email)")
                 print("Provider: \(provider)")
@@ -95,4 +106,7 @@ class MenuViewController: UIViewController {
         }
     }
     
+    @IBAction func btnCambiarContrasena(_ sender: UIButton) {
+        performSegue(withIdentifier: "cambioContrasena", sender: nil)
+    }
 }

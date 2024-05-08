@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+
 class MisCursosViewController: UIViewController , UITableViewDataSource,UITableViewDelegate{
     
     
@@ -40,6 +41,7 @@ class MisCursosViewController: UIViewController , UITableViewDataSource,UITableV
         
         v2.lblNombreCurso.text=String(arregloMisCurso[indexPath.row].nombre)
         v2.lblDescripcion.text=String(arregloMisCurso[indexPath.row].descripcion)
+        
         return v2
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

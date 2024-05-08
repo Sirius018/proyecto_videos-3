@@ -18,6 +18,8 @@
 		AD7D29312BEA081700D75DEA /* ClasePorCursoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29302BEA081700D75DEA /* ClasePorCursoViewController.swift */; };
 		AD7D29352BEA085800D75DEA /* ItemMisCursosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29342BEA085800D75DEA /* ItemMisCursosTableViewCell.swift */; };
 		AD7D29372BEA087E00D75DEA /* ItemClasePorCursoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D29362BEA087E00D75DEA /* ItemClasePorCursoTableViewCell.swift */; };
+		AD807CFE2BEB1238007B2497 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD807CFD2BEB1238007B2497 /* PlayerViewController.swift */; };
+		AD807D012BEBA167007B2497 /* CambioContrasenaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD807D002BEBA167007B2497 /* CambioContrasenaViewController.swift */; };
 		AD9F80812BE554FA00990132 /* RegistrarseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */; };
 		AD9F80852BE59A5400990132 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD9F80842BE59A5400990132 /* GoogleService-Info.plist */; };
 		AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */; };
@@ -80,6 +82,8 @@
 		AD7D29302BEA081700D75DEA /* ClasePorCursoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasePorCursoViewController.swift; sourceTree = "<group>"; };
 		AD7D29342BEA085800D75DEA /* ItemMisCursosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMisCursosTableViewCell.swift; sourceTree = "<group>"; };
 		AD7D29362BEA087E00D75DEA /* ItemClasePorCursoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemClasePorCursoTableViewCell.swift; sourceTree = "<group>"; };
+		AD807CFD2BEB1238007B2497 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		AD807D002BEBA167007B2497 /* CambioContrasenaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CambioContrasenaViewController.swift; sourceTree = "<group>"; };
 		AD9F80802BE554FA00990132 /* RegistrarseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseViewController.swift; sourceTree = "<group>"; };
 		AD9F80842BE59A5400990132 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD9F80872BE5D5B200990132 /* ProfesorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfesorViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,22 @@
 			path = MisVideos;
 			sourceTree = "<group>";
 		};
+		AD807CFC2BEB1218007B2497 /* player */ = {
+			isa = PBXGroup;
+			children = (
+				AD807CFD2BEB1238007B2497 /* PlayerViewController.swift */,
+			);
+			path = player;
+			sourceTree = "<group>";
+		};
+		AD807CFF2BEBA150007B2497 /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				AD807D002BEBA167007B2497 /* CambioContrasenaViewController.swift */,
+			);
+			path = Perfil;
+			sourceTree = "<group>";
+		};
 		AD9F80862BE5D57F00990132 /* profesores */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +225,7 @@
 		ADC254132BE27CE100F3459C /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				AD807CFF2BEBA150007B2497 /* Perfil */,
 				ADC254172BE27E1400F3459C /* MenuViewController.swift */,
 			);
 			path = menu;
@@ -266,6 +287,7 @@
 		B738BF462BDE9DDE0064ADA2 /* proyecto_videos */ = {
 			isa = PBXGroup;
 			children = (
+				AD807CFC2BEB1218007B2497 /* player */,
 				AD7D292D2BEA07D700D75DEA /* MisVideos */,
 				AD092EB22BE86FAF0068EED8 /* entidades */,
 				AD9F80862BE5D57F00990132 /* profesores */,
@@ -564,6 +586,7 @@
 				ADD100E52BE6EE5100C3E965 /* NuevoAlumnoViewController.swift in Sources */,
 				AD7D29372BEA087E00D75DEA /* ItemClasePorCursoTableViewCell.swift in Sources */,
 				AD9F80882BE5D5B200990132 /* ProfesorViewController.swift in Sources */,
+				AD807D012BEBA167007B2497 /* CambioContrasenaViewController.swift in Sources */,
 				B738BF4A2BDE9DDE0064ADA2 /* SceneDelegate.swift in Sources */,
 				AD7D29242BE9324800D75DEA /* EditarAlumnoViewController.swift in Sources */,
 				AD9F808A2BE5DAA100990132 /* ItemmProfesorTableViewCell.swift in Sources */,
@@ -573,6 +596,7 @@
 				B75CC1062BE80DEA0084357A /* Cursos.swift in Sources */,
 				ADC2541A2BE2846400F3459C /* CursoItemCollectionViewCell.swift in Sources */,
 				B708DC042BDEEDC300F36799 /* HelperViewController.swift in Sources */,
+				AD807CFE2BEB1238007B2497 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

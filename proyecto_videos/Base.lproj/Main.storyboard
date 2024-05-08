@@ -599,6 +599,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="contrasena" title="Cambiar contraseña" imagePadding="16"/>
+                                <connections>
+                                    <action selector="btnCambiarContrasena:" destination="Aca-1x-1F3" eventType="touchUpInside" id="ELq-R0-IEi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HdD-sb-wFG"/>
@@ -607,12 +610,14 @@
                     <tabBarItem key="tabBarItem" title="Perfil" image="item_perfil" id="8k1-gr-v6d"/>
                     <navigationItem key="navigationItem" id="HgG-t1-Adw"/>
                     <connections>
+                        <outlet property="btnCambiarClave" destination="3TL-9b-ERv" id="v33-K3-GEE"/>
                         <outlet property="btnCursos" destination="w4k-fT-UlF" id="pIW-2Q-5nv"/>
                         <outlet property="btnMisCursos" destination="hdv-LO-149" id="aRi-Ff-6Yl"/>
                         <outlet property="lblEmail" destination="HGE-X4-NdL" id="UPi-7I-Yuh"/>
                         <outlet property="lblProvider" destination="JiY-cE-OjN" id="nX9-Wr-joh"/>
                         <segue destination="SeC-Qf-5mk" kind="show" identifier="showVerCursos" id="fik-Vy-h9v"/>
                         <segue destination="VYj-5O-vdZ" kind="show" identifier="verMisCursos" id="nhN-7t-aWr"/>
+                        <segue destination="YHK-Pr-7oc" kind="show" identifier="cambioContrasena" id="2Fl-cR-2ZO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rio-1Y-AZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -692,7 +697,88 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJn-Uy-4qm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4263.3587786259541" y="-2004.2253521126761"/>
+            <point key="canvasLocation" x="-4149" y="-1658"/>
+        </scene>
+        <!--Cambio Contrasena View Controller-->
+        <scene sceneID="6ND-qv-EOP">
+            <objects>
+                <viewController id="YHK-Pr-7oc" customClass="CambioContrasenaViewController" customModule="proyecto_videos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IhJ-RD-jmT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-M6-Mxp">
+                                <rect key="frame" x="16" y="253" width="361" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vJs-V1-Ncc">
+                                <rect key="frame" x="16" y="355" width="173" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contraseña antigua" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcY-yh-KBh">
+                                <rect key="frame" x="16" y="224" width="149" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contraseña nueva" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-Mv-SOL">
+                                <rect key="frame" x="16" y="307" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repita la contraseña nueva" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wC5-ol-F0s">
+                                <rect key="frame" x="16" y="439" width="205" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-5n-IOK">
+                                <rect key="frame" x="84" y="624" width="225" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Guardar nueva contraseña"/>
+                                <connections>
+                                    <action selector="btnCambiarContrasena:" destination="YHK-Pr-7oc" eventType="touchUpInside" id="9GK-85-2LP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYC-to-xA3">
+                                <rect key="frame" x="32" y="79" width="162" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="return32" title=""/>
+                                <connections>
+                                    <segue destination="pEt-kY-8af" kind="unwind" identifier="regresarMenuPerfil" unwindAction="regresarMenuPerfilWithSegue:" id="PFL-hZ-Doo"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQD-k9-Nsp">
+                                <rect key="frame" x="16" y="481" width="293" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GLZ-c3-MYV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SJ1-5I-Vk6"/>
+                    <connections>
+                        <outlet property="txtContrasenaAntigua" destination="wWx-M6-Mxp" id="heY-0r-P1s"/>
+                        <outlet property="txtContrasenaNueva" destination="vJs-V1-Ncc" id="mp7-ky-plV"/>
+                        <outlet property="txtContrasenaNuevaRepeticion" destination="YQD-k9-Nsp" id="hMQ-Sr-ZcE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cys-we-7RN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pEt-kY-8af" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-3428.2442748091603" y="-2074.6478873239439"/>
         </scene>
         <!--Cursos-->
         <scene sceneID="3fO-rZ-W5I">
@@ -979,12 +1065,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6D-cb-BTA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="uf4-ak-ZEW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3804" y="-1311"/>
+            <point key="canvasLocation" x="-3474" y="-1162"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="Jh3-X1-5FH">
+            <objects>
+                <viewController id="A8I-mh-kK7" customClass="PlayerViewController" customModule="proyecto_videos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SUj-zn-J6X">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQ5-A0-x04" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="187" width="393" height="478"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiN-6b-XSQ">
+                                <rect key="frame" x="16" y="91" width="162" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="return32" title=""/>
+                                <connections>
+                                    <segue destination="RQN-IJ-Dua" kind="unwind" unwindAction="regresarListaClasesWithSegue:" id="Ddc-V5-wiu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0V9-uH-MD3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DEa-th-NRG"/>
+                    <connections>
+                        <outlet property="player" destination="GQ5-A0-x04" id="LZb-J9-w1t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGv-8o-IG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="RQN-IJ-Dua" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-9686.259541984733" y="-2313.3802816901411"/>
         </scene>
         <!--Clase Por Curso View Controller-->
         <scene sceneID="Qbs-An-Q1w">
             <objects>
-                <viewController id="d1T-k4-AsG" customClass="ClasePorCursoViewController" sceneMemberID="viewController">
+                <viewController id="d1T-k4-AsG" customClass="ClasePorCursoViewController" customModule="proyecto_videos" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xwk-TQ-nw5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1018,7 +1140,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrm-3M-arc">
-                                                    <rect key="frame" x="41" y="64" width="42" height="21"/>
+                                                    <rect key="frame" x="41" y="64" width="121" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1029,9 +1151,18 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Ver clase"/>
+                                                    <connections>
+                                                        <action selector="btnVerClase:" destination="Sc0-jB-4uE" eventType="touchUpInside" id="yiw-aN-8ut"/>
+                                                        <segue destination="A8I-mh-kK7" kind="show" identifier="verVideo" id="U1I-7G-52x"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnVerClase" destination="PIj-Hm-Bvf" id="Mx5-Kp-XEq"/>
+                                            <outlet property="lblNombreClase" destination="rrm-3M-arc" id="opT-d6-Vk7"/>
+                                            <outlet property="lblNumeroClase" destination="Qrr-Tb-W2U" id="LA1-Nj-hsM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1040,6 +1171,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="79e-xy-k6q"/>
+                    <connections>
+                        <outlet property="tvClases" destination="qmm-vm-1m1" id="Mgn-F2-MQp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jb-c8-Zh2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ACB-OA-0Yl" userLabel="Exit" sceneMemberID="exit"/>
@@ -1112,13 +1246,13 @@
                     <navigationItem key="navigationItem" id="ohL-Wb-BXK"/>
                     <connections>
                         <outlet property="tvMisCursos" destination="7pL-PC-nPa" id="1d3-xz-djm"/>
-                        <segue destination="d1T-k4-AsG" kind="show" identifier="verClasePorCurso" id="6Hy-6t-M0a"/>
+                        <segue destination="d1T-k4-AsG" kind="show" identifier="verClasePorCurso" id="qec-z7-t2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBb-dS-Smf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="S92-nz-U8T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-7428.2442748091598" y="-2375.3521126760565"/>
+            <point key="canvasLocation" x="-7963" y="-2344"/>
         </scene>
         <!--Alumnos-->
         <scene sceneID="i3i-20-z3g">
