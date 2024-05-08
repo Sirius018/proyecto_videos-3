@@ -79,7 +79,7 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
     @IBAction func regresarCrudAlumno(segue:UIStoryboardSegue!){
         self.cargarAlumnos()
         self.tvAlumnos.reloadData()
-        //dismiss(animated: true)
+        self.dismiss(animated: true)
     }
     
     func cargarAlumnos() {

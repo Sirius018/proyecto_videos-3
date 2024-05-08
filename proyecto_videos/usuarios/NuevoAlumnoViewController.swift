@@ -26,8 +26,22 @@ class NuevoAlumnoViewController: UIViewController {
         ape = txtApellido.text ?? ""
         cor = txtCorreo.text ?? ""
         cla = txtClave.text ?? ""
-        let bean = Alumno(id: 0, nombre: nom, apellido: ape, rol: "Alumno", email: cor, password: cla)
-        grabarAlumno(bean: bean)
+        let ventana = UIAlertController(title: "Sistema", message: "Seguro de registrar?", preferredStyle: .alert)
+        
+        let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
+            let bean = Alumno(id: 0, nombre: nom, apellido: ape, rol: "Alumno", email: cor, password: cla)
+            self.grabarAlumno(bean: bean)
+            if let viewController = self.presentingViewController as? AlumnoViewController {
+                viewController.cargarAlumnos()
+                viewController.tvAlumnos.reloadData()
+                self.dismiss(animated: true)
+            }
+        }
+        
+        ventana.addAction(botonAceptar)
+        ventana.addAction(UIAlertAction(title: "No", style: .cancel))
+        
+        self.present(ventana, animated: true, completion: nil)
         
     }
     

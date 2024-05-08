@@ -29,22 +29,33 @@ class EditarAlumnoViewController: UIViewController {
         bean.nombre = nom
         bean.apellido = ape
         bean.email = cor
-        actualizarAlumno(bean: bean)
+        let ventana = UIAlertController(title: "Sistema", message: "Seguro de actualizar?", preferredStyle: .alert)
+        
+        let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
+            self.actualizarAlumno(bean: self.bean)
+            if let viewController = self.presentingViewController as? AlumnoViewController {
+                viewController.cargarAlumnos()
+                viewController.tvAlumnos.reloadData()
+                self.dismiss(animated: true)
+            }
+        }
+        
+        ventana.addAction(botonAceptar)
+        ventana.addAction(UIAlertAction(title: "No", style: .cancel))
+        
+        self.present(ventana, animated: true, completion: nil)
+        
     }
     
     @IBAction func btnEliminar(_ sender: UIButton) {
         var ventana = UIAlertController(title: "Sistema", message: "¿Seguro de eliminar?", preferredStyle: .alert)
         var botonSI = UIAlertAction(title: "SI", style: .default, handler: { action in
             self.eliminarAlumno(cod: self.bean.id)
-            self.bean.id = 0
-            self.bean.nombre = ""
-            self.bean.apellido = ""
-            self.bean.email = ""
-            self.bean.password = ""
-            self.txtNombre.text = self.bean.nombre
-            self.txtApellido.text = self.bean.apellido
-            self.txtCorreo.text = self.bean.email
-            self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+            if let viewController = self.presentingViewController as? AlumnoViewController {
+                viewController.cargarAlumnos()
+                viewController.tvAlumnos.reloadData()
+                self.dismiss(animated: true)
+            }
         })
         ventana.addAction(botonSI)
         ventana.addAction(UIAlertAction(title: "NO", style: .cancel))
@@ -65,7 +76,13 @@ class EditarAlumnoViewController: UIViewController {
                     case.success(let data):
                         do {
                             let row = try JSONDecoder().decode(Alumno.self, from: data!)
-                                print("Alumno actualizado")
+                            let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(row.id) + " actualizado.", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                                self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+                            }
+                            alertController.addAction(okAction)
+                            self.present(alertController, animated: true)
+                            print("Alumno actualizado")
                         } catch {
                             print("Error en el JSON")
                         }
@@ -80,6 +97,12 @@ class EditarAlumnoViewController: UIViewController {
         AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
+                let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(self.bean.id) + " eliminado.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true)
                 print("Alumno eliminado")
             case .failure(let error):
                 print(error.localizedDescription)
