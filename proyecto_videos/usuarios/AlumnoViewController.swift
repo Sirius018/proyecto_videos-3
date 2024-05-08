@@ -44,6 +44,7 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
             
             let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
                 // Eliminar el elemento de la lista
+                self.mensajeOk(id: self.arregloAlumnos[indexPath.row].id, ms2: " eliminado.")
                 self.eliminarAlumno(cod: self.arregloAlumnos[indexPath.row].id)
                 // Actualizar la tabla
                 tableView.beginUpdates()
@@ -101,5 +102,13 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
             
         })
     }
+    
+    func mensajeOk(id:Int, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(id) + ms2, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
+    }
+    
 }
 	

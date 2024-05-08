@@ -41,23 +41,19 @@ class ActualizarProfesorViewController: UIViewController {
         
     }
     
-    @IBAction func btnEliminar(_ sender: UIButton) {/*
+    @IBAction func btnEliminar(_ sender: UIButton) {
         var ventana = UIAlertController(title: "Sistema", message: "¿Seguro de eliminar?", preferredStyle: .alert)
         var botonSI = UIAlertAction(title: "SI", style: .default, handler: { action in
-            self.eliminarAlumno(cod: self.bean.id)
-            self.bean.id = 0
-            self.bean.nombre = ""
-            self.bean.apellido = ""
-            self.bean.email = ""
-            self.bean.password = ""
-            self.txtNombre.text = self.bean.nombre
-            self.txtApellido.text = self.bean.apellido
-            self.txtCorreo.text = self.bean.email
-            self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+            self.eliminarProfesor(cod: self.bean.id)
+            if let viewController = self.presentingViewController as? ProfesorViewController {
+                viewController.cargarProfesores()
+                viewController.tvProfe.reloadData()
+                self.dismiss(animated: true)
+            }
         })
         ventana.addAction(botonSI)
         ventana.addAction(UIAlertAction(title: "NO", style: .cancel))
-        self.present(ventana, animated: true, completion: nil)*/
+        self.present(ventana, animated: true, completion: nil)
     }
     
     @IBAction func btnVolver(_ sender: Any) {
@@ -71,6 +67,7 @@ class ActualizarProfesorViewController: UIViewController {
                     case.success(let data):
                         do {
                             let row = try JSONDecoder().decode(Profesor.self, from: data!)
+                            self.mensajeOk(id: bean.id, ms2: " actualizado.")
                                 print(" Profesor actualizado")
                         } catch {
                             print("Error en el JSON")
@@ -86,6 +83,7 @@ class ActualizarProfesorViewController: UIViewController {
         AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
+                self.mensajeOk(id: cod, ms2: " eliminado.")
                 print("Profesor eliminado")
             case .failure(let error):
                 print(error.localizedDescription)
@@ -94,6 +92,13 @@ class ActualizarProfesorViewController: UIViewController {
         })
     }
    
-    
+    func mensajeOk(id:Int, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(self.bean.id) + ms2, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.performSegue(withIdentifier: "regresarCrudProfesor", sender: nil)
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
+    }
     
 }

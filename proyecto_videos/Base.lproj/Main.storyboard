@@ -189,7 +189,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="VOLVER"/>
                                 <connections>
                                     <action selector="btnVolver:" destination="pu0-g7-zC1" eventType="touchUpInside" id="4db-1Z-6Km"/>
-                                    <segue destination="guL-aJ-hQF" kind="unwind" unwindAction="regresarCrudProfesorWithSegue:" id="kNu-4A-zoF"/>
+                                    <segue destination="guL-aJ-hQF" kind="unwind" identifier="regresarCrudProfesor" unwindAction="regresarCrudProfesorWithSegue:" id="kNu-4A-zoF"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjb-rh-ban">
@@ -302,7 +302,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="VOLVER"/>
                                 <connections>
                                     <action selector="btnVolver:" destination="UjL-yA-BzQ" eventType="touchUpInside" id="vMm-jt-fiM"/>
-                                    <segue destination="gSQ-4G-7Z0" kind="unwind" unwindAction="regresarCrudProfesorWithSegue:" id="J95-aG-Nf7"/>
+                                    <segue destination="gSQ-4G-7Z0" kind="unwind" identifier="regresarCrudProfesor" unwindAction="regresarCrudProfesorWithSegue:" id="J95-aG-Nf7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URj-gp-RUm">

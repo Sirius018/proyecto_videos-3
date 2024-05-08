@@ -76,7 +76,7 @@ class EditarAlumnoViewController: UIViewController {
                     case.success(let data):
                         do {
                             let row = try JSONDecoder().decode(Alumno.self, from: data!)
-                            self.mensajeOk(ms1: "Alumno con id: ", id: bean.id, ms2: " actualizado.")
+                            self.mensajeOk(id: bean.id, ms2: " actualizado.")
                             print("Alumno actualizado")
                         } catch {
                             print("Error en el JSON")
@@ -92,7 +92,7 @@ class EditarAlumnoViewController: UIViewController {
         AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
-                self.mensajeOk(ms1: "Alumno con id: ", id: cod, ms2: " eliminado.")
+                self.mensajeOk(id: cod, ms2: " eliminado.")
                 print("Alumno eliminado")
             case .failure(let error):
                 print(error.localizedDescription)
@@ -101,8 +101,8 @@ class EditarAlumnoViewController: UIViewController {
         })
     }
     
-    func mensajeOk(ms1:String, id:Int, ms2:String) {
-        let alertController = UIAlertController(title: "Sistema", message: ms1 + String(self.bean.id) + ms2, preferredStyle: .alert)
+    func mensajeOk(id:Int, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(self.bean.id) + ms2, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
         }
