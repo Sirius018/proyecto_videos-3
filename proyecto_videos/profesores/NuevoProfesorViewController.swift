@@ -65,6 +65,12 @@ class NuevoProfesorViewController: UIViewController {
             case .success(let data):
                 do {
                     let row = try JSONDecoder().decode(Profesor.self, from: data!)
+                    let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(bean.nombre) + " eliminado.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.performSegue(withIdentifier: "regresarCrudProfesor", sender: nil)
+                    }
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true)
                     print("Profesor agregado " + String(row.id))
                 } catch {
                     print(info)

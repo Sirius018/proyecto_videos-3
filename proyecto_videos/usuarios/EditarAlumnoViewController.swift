@@ -48,8 +48,8 @@ class EditarAlumnoViewController: UIViewController {
     }
     
     @IBAction func btnEliminar(_ sender: UIButton) {
-        var ventana = UIAlertController(title: "Sistema", message: "¿Seguro de eliminar?", preferredStyle: .alert)
-        var botonSI = UIAlertAction(title: "SI", style: .default, handler: { action in
+        let ventana = UIAlertController(title: "Sistema", message: "¿Seguro de eliminar?", preferredStyle: .alert)
+        let botonSI = UIAlertAction(title: "SI", style: .default, handler: { action in
             self.eliminarAlumno(cod: self.bean.id)
             if let viewController = self.presentingViewController as? AlumnoViewController {
                 viewController.cargarAlumnos()
@@ -76,12 +76,7 @@ class EditarAlumnoViewController: UIViewController {
                     case.success(let data):
                         do {
                             let row = try JSONDecoder().decode(Alumno.self, from: data!)
-                            let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(row.id) + " actualizado.", preferredStyle: .alert)
-                            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                                self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
-                            }
-                            alertController.addAction(okAction)
-                            self.present(alertController, animated: true)
+                            self.mensajeOk(ms1: "Alumno con id: ", id: bean.id, ms2: " actualizado.")
                             print("Alumno actualizado")
                         } catch {
                             print("Error en el JSON")
@@ -97,18 +92,22 @@ class EditarAlumnoViewController: UIViewController {
         AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
-                let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(self.bean.id) + " eliminado.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
-                }
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true)
+                self.mensajeOk(ms1: "Alumno con id: ", id: cod, ms2: " eliminado.")
                 print("Alumno eliminado")
             case .failure(let error):
                 print(error.localizedDescription)
             }
             
         })
+    }
+    
+    func mensajeOk(ms1:String, id:Int, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: ms1 + String(self.bean.id) + ms2, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
     }
     
 }
