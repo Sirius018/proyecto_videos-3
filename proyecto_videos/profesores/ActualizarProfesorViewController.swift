@@ -36,7 +36,17 @@ class ActualizarProfesorViewController: UIViewController {
         bean.apellido = ape
         bean.email = email
         
-        actualizarProfesor(bean: bean)
+        var ventana = UIAlertController(title: "Sistema", message: "¿Seguro de actualizar?", preferredStyle: .alert)
+        var botonSI = UIAlertAction(title: "SI", style: .default, handler: { action in self.actualizarProfesor(bean: self.bean)
+            if let viewController = self.presentingViewController as? ProfesorViewController {
+                viewController.cargarProfesores()
+                viewController.tvProfe.reloadData()
+                self.dismiss(animated: true)
+            }
+        })
+        ventana.addAction(botonSI)
+        ventana.addAction(UIAlertAction(title: "NO", style: .cancel))
+        self.present(ventana, animated: true, completion: nil)
           
         
     }

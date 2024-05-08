@@ -8,7 +8,7 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
     
     var arregloProfesores:[Profesor]=[]
     var bean:Profesor!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cargarProfesores()
@@ -16,7 +16,7 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
         tvProfe.delegate = self
         tvProfe.rowHeight=120
         
-
+        
     }
     
     
@@ -35,7 +35,7 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "editarProfesor", sender: nil)
-
+        
     }
     
     
@@ -48,6 +48,7 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
             
             let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
                 // Eliminar el elemento de la lista
+                self.mensajeOk(id: self.arregloProfesores[indexPath.row].id, ms2: " eliminado.")
                 self.eliminarProfesor(cod: self.arregloProfesores[indexPath.row].id)
                 // Actualizar la tabla
                 tableView.beginUpdates()
@@ -72,7 +73,7 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
         self.tvProfe.reloadData()
         //dismiss(animated: true)
     }
-  
+    
     
     func cargarProfesores() {
         AF.request("https://api-moviles-2.onrender.com/profesores")
@@ -94,15 +95,15 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
                 }
             }
     }
-
     
-  
+    
+    
     
     @IBAction func btnNuevoProfesor(_ sender: UIButton) {
         performSegue(withIdentifier: "lkNuevoProfesor", sender: nil)
     }
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "lkNuevoProfesor"{
             let pantallaP=segue.destination as! NuevoProfesorViewController
@@ -123,4 +124,14 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
             }
             
         })
-    }}
+    }
+    
+    
+    func mensajeOk(id:Int, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(id) + ms2, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
+    }
+    
+}
