@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import FirebaseAuth
 
 class EditarAlumnoViewController: UIViewController {
     @IBOutlet weak var txtNombre: UITextField!

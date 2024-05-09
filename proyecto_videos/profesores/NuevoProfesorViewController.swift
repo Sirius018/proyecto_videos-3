@@ -1,6 +1,7 @@
 
 import UIKit
 import Alamofire
+import FirebaseAuth
 
 class NuevoProfesorViewController: UIViewController {
 
@@ -64,6 +65,7 @@ class NuevoProfesorViewController: UIViewController {
             switch info.result {
             case .success(let data):
                 do {
+                    self.grabarAuth(vEma: bean.email, vPas: bean.password)
                     let row = try JSONDecoder().decode(Profesor.self, from: data!)
                     let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(row.id) + " registrado.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
@@ -92,6 +94,16 @@ class NuevoProfesorViewController: UIViewController {
     @IBAction func btnVolver(_ sender: UIButton) {
         NotificationCenter.default.post(name: Notification.Name("ProfesorGuardado"), object: nil)
         dismiss(animated: true)
+    }
+    
+    func grabarAuth(vEma:String, vPas:String) {
+        Auth.auth().createUser(withEmail: vEma, password: vPas) { result, error in
+            if let data = result {
+                print("Registro de autentitación OK")
+            } else {
+                print("Autenticación no registrada")
+            }
+        }
     }
     
     

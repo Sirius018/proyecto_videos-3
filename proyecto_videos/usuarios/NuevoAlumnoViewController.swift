@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import FirebaseAuth
 
 class NuevoAlumnoViewController: UIViewController {
     @IBOutlet weak var txtNombre: UITextField!
@@ -58,6 +59,7 @@ class NuevoAlumnoViewController: UIViewController {
             switch info.result {
             case .success(let data):
                 do {
+                    self.grabarAuth(vEma: bean.email, vPas: bean.password)
                     let row = try JSONDecoder().decode(Alumno.self, from: data!)
                     let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(row.id) + " agregado.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
@@ -73,5 +75,15 @@ class NuevoAlumnoViewController: UIViewController {
                 print(error.localizedDescription)
             }
         })
+    }
+    
+    func grabarAuth(vEma:String, vPas:String) {
+        Auth.auth().createUser(withEmail: vEma, password: vPas) { result, error in
+            if let data = result {
+                print("Registro de autentitación OK")
+            } else {
+                print("Autenticación no registrada")
+            }
+        }
     }
 }
