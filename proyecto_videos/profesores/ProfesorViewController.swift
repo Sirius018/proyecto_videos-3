@@ -114,8 +114,8 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
         
     }
     
-    func eliminarProfesor(cod:Int) {
-        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+    func eliminarProfesor(cod:String) {
+        AF.request("https://api-moviles-2.onrender.com/" + cod, method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
                 print("Profesor eliminado")
@@ -127,8 +127,8 @@ class ProfesorViewController: UIViewController , UITableViewDataSource,UITableVi
     }
     
     
-    func mensajeOk(id:Int, ms2:String) {
-        let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(id) + ms2, preferredStyle: .alert)
+    func mensajeOk(id:String, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + id + ms2, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true)

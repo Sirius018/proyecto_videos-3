@@ -91,8 +91,8 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
         }
     };
     
-    func eliminarAlumno(cod:Int) {
-        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+    func eliminarAlumno(cod:String) {
+        AF.request("https://api-moviles-2.onrender.com/" + cod, method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
                 print("Alumno eliminado")
@@ -103,8 +103,8 @@ class AlumnoViewController:UIViewController,UITableViewDataSource, UITableViewDe
         })
     }
     
-    func mensajeOk(id:Int, ms2:String) {
-        let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(id) + ms2, preferredStyle: .alert)
+    func mensajeOk(id:String, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + id + ms2, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true)

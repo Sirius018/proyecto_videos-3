@@ -8,7 +8,7 @@
 import UIKit
 
 struct Usuario:Codable {
-    var id:Int
+    var id:String
     var nombre:String
     var apellido:String
     var rol:String

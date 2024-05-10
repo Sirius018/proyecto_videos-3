@@ -15,12 +15,14 @@ class EditarAlumnoViewController: UIViewController {
     @IBOutlet weak var txtCorreo: UITextField!
     
     var bean:Alumno!
+    var email:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         txtNombre.text = bean.nombre
         txtApellido.text = bean.apellido
         txtCorreo.text = bean.email
+        email = bean.email
     }
 
     @IBAction func btnActualizar(_ sender: UIButton) {
@@ -77,6 +79,7 @@ class EditarAlumnoViewController: UIViewController {
                     case.success(let data):
                         do {
                             let row = try JSONDecoder().decode(Alumno.self, from: data!)
+                            self.actualizarAuth(vEma: bean.email)
                             self.mensajeOk(id: bean.id, ms2: " actualizado.")
                             print("Alumno actualizado")
                         } catch {
@@ -89,8 +92,8 @@ class EditarAlumnoViewController: UIViewController {
         })
     }
     
-    func eliminarAlumno(cod:Int) {
-        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+    func eliminarAlumno(cod:String) {
+        AF.request("https://api-moviles-2.onrender.com/" + cod, method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
                 self.mensajeOk(id: cod, ms2: " eliminado.")
@@ -102,8 +105,26 @@ class EditarAlumnoViewController: UIViewController {
         })
     }
     
-    func mensajeOk(id:Int, ms2:String) {
-        let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + String(self.bean.id) + ms2, preferredStyle: .alert)
+    func actualizarAuth(vEma:String) {
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        user?.updateEmail(to: vEma, completion: { (error) in
+            if let error = error {
+                print("Error al actualizar el correo: " + error.localizedDescription)
+            } else {
+                print("Correo actualizado correctamente.")/*
+                user?.sendEmailVerification(completion: { (error) in
+                    if let error = error {
+                        print("Eror al enviar verificación de correo: " + error.localizedDescription)
+                    } else {
+                        print("Verificación de correo enviada satisfactoriamente.")
+                    }
+                })*/
+            }
+        })
+    }
+    func mensajeOk(id:String, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Alumno con id: " + self.bean.id + ms2, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.performSegue(withIdentifier: "regresarCrudAlumno", sender: nil)
         }

@@ -30,13 +30,25 @@ class NuevoAlumnoViewController: UIViewController {
         let ventana = UIAlertController(title: "Sistema", message: "Seguro de registrar?", preferredStyle: .alert)
         
         let botonAceptar = UIAlertAction(title: "Si", style: .default) { action in
-            let bean = Alumno(id: 0, nombre: nom, apellido: ape, rol: "Alumno", email: cor, password: cla)
-            self.grabarAlumno(bean: bean)
-            if let viewController = self.presentingViewController as? AlumnoViewController {
-                viewController.cargarAlumnos()
-                viewController.tvAlumnos.reloadData()
-                self.dismiss(animated: true)
+            Auth.auth().createUser(withEmail: cor, password: cla){result,error in
+                //validar result
+                if let data=result{
+                    print("Registro autenticacion OK")
+                    let uid=data.user.uid
+                    let bean = Alumno(id: uid, nombre: nom, apellido: ape, rol: "Alumno", email: cor, password: cla)
+                    self.grabarAlumno(bean: bean)
+                    
+                    if let viewController = self.presentingViewController as? AlumnoViewController {
+                        viewController.cargarAlumnos()
+                        viewController.tvAlumnos.reloadData()
+                        self.dismiss(animated: true)
+                    }
+                }
+                else{
+                    print("Autenticacion no registrada")
+                }
             }
+
         }
         
         ventana.addAction(botonAceptar)
@@ -80,6 +92,7 @@ class NuevoAlumnoViewController: UIViewController {
     func grabarAuth(vEma:String, vPas:String) {
         Auth.auth().createUser(withEmail: vEma, password: vPas) { result, error in
             if let data = result {
+                
                 print("Registro de autentitación OK")
             } else {
                 print("Autenticación no registrada")

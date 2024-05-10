@@ -26,13 +26,28 @@ class NuevoProfesorViewController: UIViewController {
         let email = txtEmail.text ?? ""
         let password = txtPassword.text ?? ""
         
-        let profesor = Profesor(id: 0, nombre: nombre, apellido: apellidos, rol: "Profesor", email: email, password: password)
         
-        grabarProfesor(bean: profesor)
+        grabarAuth(vNom: nombre, vApe: apellidos, vCorreo: email, vClave: password)
+        
         
         
     }
-    
+    func grabarAuth(vNom:String,vApe:String,vCorreo:String,vClave:String){
+        //grabar autenticacion
+        Auth.auth().createUser(withEmail: vCorreo, password: vClave){result,error in
+            //validar result
+            if let data=result{
+                print("Registro autenticacion OK")
+                let uid=data.user.uid
+                let profesor = Profesor(id: uid, nombre: vNom, apellido: vApe, rol: "Profesor", email: vCorreo, password: vClave)
+                self.grabarProfesor(bean: profesor)
+                
+            }
+            else{
+                print("Autenticacion no registrada")
+            }
+        }
+    }
     
     
     
@@ -65,7 +80,7 @@ class NuevoProfesorViewController: UIViewController {
             switch info.result {
             case .success(let data):
                 do {
-                    self.grabarAuth(vEma: bean.email, vPas: bean.password)
+                    //self.grabarAuth(vEma: bean.email, vPas: bean.password)
                     let row = try JSONDecoder().decode(Profesor.self, from: data!)
                     let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(row.id) + " registrado.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in

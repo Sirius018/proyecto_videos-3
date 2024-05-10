@@ -89,8 +89,8 @@ class ActualizarProfesorViewController: UIViewController {
         })
     }
     
-    func eliminarProfesor(cod:Int) {
-        AF.request("https://api-moviles-2.onrender.com/" + String(cod), method: .delete).response(completionHandler: { info in
+    func eliminarProfesor(cod:String) {
+        AF.request("https://api-moviles-2.onrender.com/" + cod, method: .delete).response(completionHandler: { info in
             switch info.result {
             case .success(let data):
                 self.mensajeOk(id: cod, ms2: " eliminado.")
@@ -102,8 +102,8 @@ class ActualizarProfesorViewController: UIViewController {
         })
     }
    
-    func mensajeOk(id:Int, ms2:String) {
-        let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + String(self.bean.id) + ms2, preferredStyle: .alert)
+    func mensajeOk(id:String, ms2:String) {
+        let alertController = UIAlertController(title: "Sistema", message: "Profesor con id: " + self.bean.id + ms2, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.performSegue(withIdentifier: "regresarCrudProfesor", sender: nil)
         }
